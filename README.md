@@ -4,14 +4,13 @@ This repository inlcudes the models for "Capacity management of modular assembly
 The folllowing description provides information about the benchmark test performed in the PhD thesis: Capacity planning of modular assembly systems, written by Dávid Gyulai, MTA SZTAKI. The benchmark is performed by using several production planning and system configuration scenarios, including random parameters as well. Even though some parameters are random, their generation is described below, moreover, they do not affect the general trends of the results, as several scenarios are generated, and all methods are performed on the same scenarios. Conclusively, the benchmark is considered as a representative comparison of the different methods analyzed in the thesis.
 
 ## Requirements
-
 In order to execute the experiments, two kinds of SW tools are needed:
-* A solver engine that is capable of dealing with mixed integer linear programs (MILP)
+* A solver engine that is capable of dealing with mixed integer linear programs (MILP). The provided mathematical models are implemented in [FICO Xpress®](http://www.fico.com/en/products/fico-xpress-optimization) commercial optimization suite, applying its Mosel language.
   * `benchmark_assignment_greedy.mos` 
   * `benchmark_assignment_lookahead_v2.mos`
   * `benchmark_assignment_rollinghorizon.mos`
   * `benchmark_planning_v3.mos`
-* An application to fit the regression models on the result of virtual planning scenarios
+* An application to fit the regression models on the result of virtual planning scenarios. The data analytics models are implemented in open-source R language.
   * `cost_regression9.R`
 * MS Excel to open the workbooks inlcuding the input data and results
   * `benchmarkInput.xls` (note that the file includes a Visual Basic macro)
@@ -19,10 +18,10 @@ In order to execute the experiments, two kinds of SW tools are needed:
 * C#.NET to run the benchmark aplication that generates orders by running the VB macro, and executes the models sequentially
   * `BenchmarkApp.cs` (requires Xpress' Mosel and Microsoft's Excel references)
 
-The provided mathematical models are implemented in FICO Xpress commercial optimization suite, applying its Mosel language. The data analytics models are implemented in open-source R language.
+Take into consideration that the execution of the models involves the generation of output files to export the data and establish the file link between the applications.
 
 ## benchmarkInput.xls
-The benchmarkInput.xls file includes all the input needed to run the experiments presented in the benchmark section of the thesis.
+The `benchmarkInput.xls` file includes all the input needed to run the experiments presented in the benchmark section of the thesis.
 
 The first sheet "Products" includes all the static data corresponding to the products and their modularized assembly lines. Column "A" includes the name of different products P1-P67. The columns WS1-WS8 provide the number of moules from each type, needed to assemble a given product type. The "SetupTime" is the setup time [min] when switching from one product type to another, independently of the system type. The "ProcTime" is the total amount of manual processing times expressed in minutes. The "Reconfiguration" provides in formation about the reconfiguration time in minutes.
 
@@ -31,10 +30,10 @@ The second sheet "Resources" provide information about the reatio of prices of d
 The worksheets "SimulationScenarios" and "Orders" are strongly interdependent, and they are used for the generation of random production orders for the different scenarios. In "SimulationScenarios", the aggragate volumes of products can be controlled by defining the general volume trend (the bigger the value, the bigger the change in the volume over the horizon), and overwriting the parameters of general trends defined in rows "75:85". These trends define multiplier values that are perutrbated with random number to simulate different product lifecycle curves. Columns "W:AK" provide information about the overall work contents in the different period, also represented by a line chart. This information helps one to see the fluctuation of capacity requirements over the horizon. The worksheet "Orders" is reponsible for random order generation applying the cumulative numbers defined on "SimulationScenarios". The "Create orders" button executes the "OrderCreation" VB macro performing the random order generation and the file export to .dat format. The random parameters can be controlled by adjusting the average number of orders in column "NumOrders" and the average batch sizes in column "AvgOrderVol". Other random parameter control are found inside the VB macro, e.g. the deviation from the previously mentioned average values. Please note that the file path inside the macro need to be overwritten! The orders in a .dat format will be generated to the folder with the designated path in the macro, and the workbook is udated automatically afterwards.
 
 ## cost_regression9.R
-The R file "cost_regression9.R" fits regression models to predict the costs incur in different systems, applying the results of virtual scenarios stored in files planningRegression_(1,2,3).dat. New scenarios can be added, or the existing ones can be replaced by modifying the R script. The R script exports the coefficients of each model to .dat files in the working folder.
+The R file `cost_regression9.R` fits regression models to predict the costs incur in different systems, applying the results of virtual scenarios stored in files planningRegression_(1,2,3).dat. New scenarios can be added, or the existing ones can be replaced by modifying the R script. The R script exports the coefficients of each model to .dat files in the working folder.
 
 ## ModularResults.xlsx
-The Excel file "ModularResults.xlsx" contain the results of experiments obtained by solving the strategic level system configuration model. As presented in the thesis, 15 different test cases were generated by applying the BenchmarkInput.xls file for each of the four scenarios (DIV_NORM, DIV_VOL, BAL_NORM, BAL_VOL). 
+The Excel file `ModularResults.xlsx` contains the results of experiments obtained by solving the strategic level system configuration model. As presented in the thesis, 15 different test cases were generated by applying the BenchmarkInput.xls file for each of the four scenarios (DIV_NORM, DIV_VOL, BAL_NORM, BAL_VOL). 
 
 The results of each scenario are presented on separated woksheets in the file. The columns of these sheets are the followings:
 
@@ -48,3 +47,7 @@ The results of each scenario are presented on separated woksheets in the file. T
 - Overall column define the average percantage value of the previous three columns.
 
 The "Summary" sheet provide the overall results of the experiments by calculating the parameters of two boxplots as presented in the thesis. The first plot (blue) presents the results considering the average vales of costs, changes and space requirements. In the second plot, the objective function values are presented.
+
+
+## BenchmarkApp.cs
+This C# application is prepared to execute all scenarios of the benchmark, by executing the order generator VB macro in `benchmarkInput.xls` and running the main Xpress model called `benchmark_main.mos` that executes the Xpress submodely one after another. Please note that commercial Xpress references need to be added to use the applciation.
