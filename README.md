@@ -1,5 +1,5 @@
 # ModularAssembly
-Models for "Capacity management of modular assembly systems", by Dávid Gyulai
+This repository inlcudes the models for "Capacity management of modular assembly systems", and also the results of experiments. The method, models and results are published in a [journal paper](https://www.sciencedirect.com/science/article/pii/S0278612517300213) and in a PhD thesis "Production and and capacity planning methods for flexible and reconfigurale assembly systems" by Dávid Gyulai, MTA SZTAKI.
 
 The folllowing description provides information about the benchmark test performed in the PhD thesis: Capacity planning of modular assembly systems, written by Dávid Gyulai, MTA SZTAKI. The benchmark is performed by using several production planning and system configuration scenarios, including random parameters as well. Even though some parameters are random, their generation is described below, moreover, they do not affect the general trends of the results, as several scenarios are generated, and all methods are performed on the same scenarios. Conclusively, the benchmark is considered as a representative comparison of the different methods analyzed in the thesis.
 
@@ -20,13 +20,13 @@ The Excel file "ModularResults.xlsx" contain the results of experiments obtained
 
 The results of each scenario are presented on separated woksheets in the file. The columns of these sheets are the followings:
 
--Run: the number of the test case out of the 15 different ones,
--Method: the applied solution method for the benchmark, including LO(1), RO(2), CR(3) and IR(4). In case of CR and IR, six-six different setting were analysed as presented in the thesis.
--In columns D-I, prefixes "REC","DED" and "FLX" indicate the system types reconfigurable, dedicated, and flexible, respectively. The suffixes "VOL" and "INV" defines the volume and investment costs, respectively. In this way, the volume and investment related costs for each system and scenario can be compared.
--SpaceReq: it defines the total space requirement costs of the complete system, considering the space multiplier factors of the different module types.
+- Run: the number of the test case out of the 15 different ones,
+- Method: the applied solution method for the benchmark, including LO(1), RO(2), CR(3) and IR(4). In case of CR and IR, six-six different setting were analysed as presented in the thesis.
+- In columns D-I, prefixes "REC","DED" and "FLX" indicate the system types reconfigurable, dedicated, and flexible, respectively. The suffixes "VOL" and "INV" defines the volume and investment costs, respectively. In this way, the volume and investment related costs for each system and scenario can be compared.
+- SpaceReq: it defines the total space requirement costs of the complete system, considering the space multiplier factors of the different module types.
 - Changes: it defines the costs of change, incur by the reassignment of the products between system types.
 - Objective: this is the objective function value, representing the total costs incur over the horizon.
--Columns M:O defined the percentage values of space, change and objective function values of the "Run"-s considering on test case.
--Overall column define the average percantage value of the previous three columns.
+- Columns M:O define the percentage values of space, change and objective function values of the "Run"-s considering on test case.
+- Overall column define the average percantage value of the previous three columns.
 
 The "Summary" sheet provide the overall results of the experiments by calculating the parameters of two boxplots as presented in the thesis. The first plot (blue) presents the results considering the average vales of costs, changes and space requirements. In the second plot, the objective function values are presented.
