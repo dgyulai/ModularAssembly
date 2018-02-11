@@ -1,0 +1,445 @@
+
+
+model ModularProdPlanner
+	uses "mmxprs", "mmsheet","mmsystem", "mmrobust";
+	
+	parameters
+		DIR= "C:/Adatok/PhD/ModularAssemblyGitHub/"
+		
+		MethodCount = 2
+		RunIndex = 1
+		RunID = 1
+		
+		Period = 10
+	   	Operator = 20
+	   	Operation = 10
+	   	ShiftDuration = 480
+	   	SetupCost = 5
+	   	LatenessCost = 3
+	   	DegreeOfAutomDed = 1
+	   	DegreeOfAutomFlx = 2
+	   	ModulePriceMultiDed = 0.6
+	   	ModulePriceMultiRec = 1.0 !0.1
+	   	ModulePriceMultiFlx = 1.0
+	   	RecSpaceReq = 12	!15
+		FlxSpaceReq = 18	!20
+		DedSpaceReq = 22	!25
+		MaxSpace = 1600000
+	   	!SelectedBucket = 1
+	   	w1 = 0.01	!volume cost multiplier
+	   	w2 = 10	!investment cost multiplier
+	   	!SystemSelect =  1	!1:reconfigurable, 2:dedicated, 3:flexible
+	end-parameters
+
+	declarations
+		Bucket = 0..10 ! set of strategic planning periods
+		S  = {"Rec","Ded","Flx"}
+		T : set of integer
+		J : set of string !set of modules
+		P : set of string !subset of products, filtered by system type
+		C = 1..14 !set of clusters
+		subP : set of string
+		RO : set of integer !random generated orders
+		
+		NumOfOrders : integer
+		HorizonLen: integer
+		NumOfProducts : integer
+		BatchSizes : integer
+		CapReq : integer
+		SumModuleReq : array(J) of integer
+		Export : text
+		SumModulesPrice : integer
+		
+		SetupTime : array(P) of real
+		ProcTime : array(P) of real
+		ReconfigTime : array(P) of real
+		Forecast : array(P) of integer
+		Cluster : array(P) of integer
+		VolumePerProduct : array(P) of integer
+		
+		Results : array(1..MethodCount, Bucket, 1..3, 1..5) of integer
+		CostResults : array(1..MethodCount) of integer
+		PercentageCost : array(1..MethodCount) of real
+		SpaceResults : array(1..MethodCount) of integer
+		PercentageSpace : array(1..MethodCount) of real
+		ChangeResults : array(1..MethodCount) of integer
+		PercentageChange : array(1..MethodCount) of real
+		
+		WS1: array(P) of integer
+		WS2: array(P) of integer
+		WS3: array(P) of integer
+		WS4: array(P) of integer
+		WS5: array(P) of integer
+		WS6: array(P) of integer
+		WS7: array(P) of integer
+		WS8: array(P) of integer
+		
+		Assignment	: array(P,0..getsize(Bucket),S) of boolean
+		ResourcePool: array(0..getsize(Bucket),S,J) of integer
+		InitResourcePool: array(S,J) of integer
+				
+		ClusterVolumes: dynamic array(C) of integer
+		ClusterProducts : dynamic array(C,P) of integer
+		ClusterResources: dynamic array(C,J) of integer
+		
+		ModuleSpace : array(S) of integer
+		
+		Desc: array(J) of string
+		ModulePrice: array(J) of integer
+		ModulePool: array(J) of integer
+		!ModuleUtilization: array(T,J) of real
+	
+		ModuleReq: array(P,J) of integer
+		
+		BestGreedy1 : real
+		BestGreedy2 : real
+		
+		ChangeCount: array(1..1) of integer
+		Changes: array(1..MethodCount,P,1..10,S) of integer
+			
+		!SimultLines : array(T) of real
+		!LowerBound : array(J) of integer
+		
+		H : dynamic array(T) of mpvar !dolgozók létszáma t-ben
+		N : array(J) of mpvar  !a modulok száma típusonként
+		X : dynamic array(RO,T) of mpvar !adott rendelést adott idõperiódusban gyártunk-e
+		Y : dynamic array(P,T) of mpvar !adott terméket adott idõperiódusban gyártunk-e
+		NFlex : dynamic array(C,J) of mpvar !a rugalmas sorokhoz tartozó erõforrások száma soronkénnt
+
+		Item :  dynamic array(RO) of string
+		Volume :  dynamic array(RO) of integer
+		Due:  dynamic array(RO) of integer
+		OrderFilter : dynamic array(RO) of boolean
+		
+	  	OPERATOR_COST : linctr
+	  	SETUP_COST : linctr
+	  	RECONF_COST : linctr
+	 	OPERATION_COST : linctr
+	 	LATENESS_COST : linctr
+	 	COST : linctr
+	 	CAPACITY_REQ : linctr
+	 	
+	 	ModularProductionPlanning : mpproblem
+	end-declarations
+	
+	initializations from "mmsheet.xls:" + DIR + "benchmarkInput.xls"
+		[WS1,WS2,WS3,WS4,WS5,WS6,WS7,WS8,SetupTime,ProcTime,ReconfigTime,Forecast] as "[Products$A2:M68]"
+		[ModulePrice, ModulePool] as "[Resources$A2:C9]"
+	end-initializations
+	
+	initializations from DIR + "dat/ClusterLabels.dat"
+		Cluster
+	end-initializations
+	
+	initializations from DIR + "dat/InitResourcePool.dat"
+		InitResourcePool
+	end-initializations
+	
+	forall (BenchmarkMethod in 1..MethodCount) do !1: lookahead, 2: rolling, 3: greedy 
+			!writeln(BenchmarkMethod)
+			case BenchmarkMethod of
+			  1 : do 
+				  	initializations from DIR + "dat/AssignmentLookahead.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  2 : do 
+				  	initializations from DIR + "dat/AssignmentRolling.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  3 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_11.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  4 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_12.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  5 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_13.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  6 : do 
+				  	initializations from DIR + "AssignmentGreedy_14.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  7 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_15.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  8 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_16.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  9 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_21.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  10 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_22.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  11 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_23.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  12 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_24.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  13 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_25.dat"
+						Assignment
+					end-initializations
+			  end-do
+			  14 : do 
+				  	initializations from DIR + "dat/AssignmentGreedy_26.dat"
+						Assignment
+					end-initializations
+			  end-do
+			end-case 
+	
+		forall(s in S, j in J)ResourcePool(0,s,j) := InitResourcePool(s,j)
+		
+		ModuleSpace("Rec") := RecSpaceReq
+		ModuleSpace("Ded") := DedSpaceReq
+		ModuleSpace("Flx") := FlxSpaceReq
+		
+		Export := ""
+		
+		forall(b in 1..10) do !b in Bucket
+			!write(b)
+			forall(SystemSelect in 1..3) do
+				with ModularProductionPlanning do
+	
+					reset(ModularProductionPlanning)
+					setrandseed(RunID)
+									
+					initializations from DIR + "dat/orders " + Period + ".dat"
+						Volume Item Due
+					end-initializations
+					
+					if SystemSelect = 1 then
+						SysInd := "Rec"
+					elif SystemSelect = 2 then	
+						SysInd := "Ded"
+					elif SystemSelect = 3 then		
+						SysInd := "Flx"	
+					end-if		
+					
+					writeln("RunIndex: ", RunIndex, " MethodNo: ", BenchmarkMethod, " Period: ", b, " System: ", SysInd)
+					
+					HorizonLen := 40
+					forall(t in 1..HorizonLen) T += {t}		
+					
+					forall(ro in RO) do
+						if Assignment(Item(ro),b,SysInd) then
+							OrderFilter(ro) := true
+						else
+							OrderFilter(ro) := false
+						end-if
+					end-do		 
+					
+					forall(p in P) do
+						ModuleReq(p,J(1)) := WS1(p)
+						ModuleReq(p,J(2)) := WS2(p)
+						ModuleReq(p,J(3)) := WS3(p)
+						ModuleReq(p,J(4)) := WS4(p)
+						ModuleReq(p,J(5)) := WS5(p)
+						ModuleReq(p,J(6)) := WS6(p)
+						ModuleReq(p,J(7)) := WS7(p)
+						ModuleReq(p,J(8)) := WS8(p)
+					end-do
+					
+					ModulePrice :: (["WS1","WS2","WS3","WS4","WS5","WS6","WS7","WS8"])[30,40,33,4,10,20,20,10]
+					ModulePool :: (["WS1","WS2","WS3","WS4","WS5","WS6","WS7","WS8"])[0,0,0,0,0,0,0,0]
+		
+					forall(c in C, p in P | Cluster(p) = c)ClusterProducts(c,p) := 1
+					
+					forall(c in C) do
+						ClusterVolumes(c) := sum(ro in RO | Cluster(Item(ro)) = c and OrderFilter(ro))Volume(ro)
+					end-do
+					
+					forall(c in C, j in J | ClusterVolumes(c) > 0) do
+						ClusterResources(c,j) := max(p in P | Cluster(p) = c)ModuleReq(p,j)
+					end-do
+					
+					forall(ro in RO, t in T | Due(ro) <= HorizonLen and OrderFilter(ro)) do
+						if(t <= Due(ro)) then
+							Deviation(ro,t) := LatenessCost * Volume(ro) * (Due(ro) - t)
+						else
+							Deviation(ro,t) := LatenessCost * 10 * Volume(ro) * (t - Due(ro))
+						end-if
+					end-do
+					
+					forall(p in P)VolumePerProduct(p) := sum(ro in RO | Item(ro) = p and OrderFilter(ro))Volume(ro)
+					
+					!CONSTRAINTS
+					forall(ro in RO,t in T, p in P, j in J | Due(ro) <= HorizonLen and OrderFilter(ro)) do
+						create(X(ro,t))
+						X(ro,t) is_binary
+						create(N(j))
+						N(j) 	is_integer
+						create(H(t))
+						H(t) 	is_integer
+						create(Y(p,t))
+						Y(p,t)	is_integer
+					end-do
+				
+					forall(ro in RO | OrderFilter(ro)) do 
+						sum(t in T)X(ro,t) = 1 !mindent le kell gyartani
+					end-do
+					
+					if SystemSelect = 1 then !RECONFIGURABLE
+						!writeln("Reconfigurable\n")
+						forall(t in T) H(t) <= sum(j in J, p in P)ModuleReq(p,j) * Y(p,t) !a dolgozok szama kevesebb mint az osszes modul muszakonkent
+					
+						forall (ro in RO, p in P, t in T | p = Item(ro) and Due(ro) <= HorizonLen and OrderFilter(ro)) X(ro,t) <= Y(p,t) !a setupok kezelese
+						
+						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) + Y(Item(ro),t) * ReconfigTime(Item(ro))) <= H(t) * ShiftDuration !a dolgozok szama eleg a feladatok vegrehajtasahoz
+													
+						forall(j in J, t in T)(sum(p in P | VolumePerProduct(p) > 0)ModuleReq(p,j) * Y(p,t) <= ResourcePool(b-1,SysInd,j) + N(j)) !a modulok szama eleg a termekek szerelesehez
+						INVESTMENT := sum(j in J)(ModulePriceMultiRec * ModulePrice(j) * N(j))
+					
+					elif SystemSelect = 2 then !DEDICATED
+						!writeln("Dedicated\n")
+						forall(t in T) H(t) <= sum(j in J, p in P)ModuleReq(p,j) * Y(p,t) !a dolgozok szama kevesebb mint az osszes modul muszakonkent
+									
+						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) * (1/DegreeOfAutomDed)) <= H(t) * ShiftDuration !a dolgozok szama eleg a feladatok vegrehajtasahoz
+						
+						!Csak akkor kell ha az elõzõ periódusban nem volt hozzárendelve				
+						forall(j in J)N(j) = sum(p in P | VolumePerProduct(p) > 0 and Assignment(p,b-1,"Ded") = false)ModuleReq(p,j)
+						INVESTMENT := sum(j in J)(ModulePriceMultiDed * ModulePrice(j) * N(j))
+					
+					elif SystemSelect = 3 then !FLEXIBLE
+						forall(c in C, j in J | ClusterVolumes(c) > 0) do
+							create(NFlex(c,j))
+							NFlex(c,j) is_integer
+						end-do	
+							
+						!writeln("Flexible\n")
+						forall(t in T) H(t) <= sum(j in J, c in C | ClusterVolumes(c) > 0)NFlex(c,j) !a dolgozok szama kevesebb mint az osszes modul muszakonkent
+					
+						forall (ro in RO, p in P, t in T | p = Item(ro) and Due(ro) <= HorizonLen and OrderFilter(ro)) X(ro,t) <= Y(p,t) !a setupok kezelese
+						
+						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) * (1/DegreeOfAutomFlx) + Y(Item(ro),t) * 10) <= H(t) * ShiftDuration !a dolgozok szama eleg a feladatok vegrehajtasahoz
+												
+						forall(j in J, t in T, c in C | ClusterVolumes(c) >= 0)(sum(p in P | Cluster(p) = c)ClusterResources(c,j) * Y(p,t) <= NFlex(c,j)) !a modulok szama clusterenként eleg a termekek szerelesehez	
+						
+						forall(j in J) do
+							ResourcePool(b-1,SysInd,j) + N(j) >= sum(c in C)NFlex(c,j)
+						end-do
+						INVESTMENT := sum(j in J)(ModulePriceMultiFlx * ModulePrice(j) * N(j)) !az erõforrásokba clusterenként ruházunk be
+					end-if
+					
+					!OBJECTIVE FUNCTIONS
+					OPERATOR_COST := sum(t in T)H(t) * Operator
+					OPERATION_COST := Operation * sum(t in T,ro in RO,j in J | OrderFilter(ro))(X(ro,t) * ModuleReq(Item(ro),j))
+					SETUP_COST := sum(p in P, t in T) Y(p,t) * SetupCost
+					LATENESS_COST := sum(t in T,ro in RO | OrderFilter(ro))X(ro,t) * Deviation(ro,t)
+					
+					VOLUME := OPERATOR_COST + OPERATION_COST + SETUP_COST + LATENESS_COST
+					COST := w1 * VOLUME + w2 * INVESTMENT
+		
+					!writeln("Begin running model: ",z)
+					setparam("XPRS_MAXTIME", -300)
+					setparam("XPRS_MIPRELSTOP", 0.1)
+		
+					minimize(COST)
+					
+					BatchSizes := round(sum(ro in RO | OrderFilter(ro))Volume(ro)/getsize(Volume))
+					
+					(!
+					
+					forall(j in J)SumModuleReq(j) := sum(p in subP)ModuleReq(p,j)
+					
+					writeln("OperatorCost: ", OPERATOR_COST.sol)
+					writeln("OperationCost: ", OPERATION_COST.sol)
+					writeln("SetupCost: ", SETUP_COST.sol)
+					writeln("LatenessCost: ", LATENESS_COST.sol)
+					writeln("InvestmentCost: ", INVESTMENT.sol)
+					writeln("VolumeCost: ", VOLUME.sol)
+					writeln("SumWorkstations: ",sum(j in J)N(j).sol)
+					writeln("COST: ", COST.sol)
+					writeln("No. of products: ", getsize(P))
+					
+					forall(j in J) do
+						writeln(j,"	", N(j).sol)
+					end-do
+					!)
+					
+					!Store the current resource set in the resource pool array
+					forall(j in J) do
+						ResourcePool(b,SysInd,j) := ResourcePool(b-1,SysInd,j) + floor(N(j).sol)
+					end-do
+					
+					Results(BenchmarkMethod,b,SystemSelect,1) := ceil(w1 * VOLUME.sol)
+					Results(BenchmarkMethod,b,SystemSelect,2) := ceil(w2 * INVESTMENT.sol)
+					Results(BenchmarkMethod,b,SystemSelect,3) := sum(j in J)ModuleSpace(SysInd) * ResourcePool(b,SysInd,j) !SpaceReq
+					Results(BenchmarkMethod,b,SystemSelect,4) := ceil(getobjval) ! Total cost
+				end-do
+			end-do
+		end-do
+		forall(p in P, t in 1..10, s in S | Assignment(p,t,s) <> Assignment(p,t-1,s)) do
+			Changes(BenchmarkMethod,p,t,s) := 1
+		end-do
+	end-do
+	
+	
+	
+	forall(i in 1..MethodCount) do
+		CostResults(i) := sum(b in Bucket, j in 1..3)Results(i,b,j,4)
+	end-do
+	forall(i in 1..MethodCount) do
+		PercentageCost(i) := CostResults(i) / max(k in 1..MethodCount)CostResults(k)
+	end-do
+	
+	forall(i in 1..MethodCount) do
+		SpaceResults(i) := sum(b in Bucket, j in 1..3)Results(i,b,j,3)
+	end-do
+	forall(i in 1..MethodCount) do
+		PercentageSpace(i) := SpaceResults(i) / max(k in 1..MethodCount)SpaceResults(k)
+	end-do
+	
+	forall(i in 1..MethodCount) do
+		ChangeResults(i) := sum(p in P, t in 1..10, s in S)Changes(i,p,t,s)
+	end-do
+	forall(i in 1..MethodCount) do
+		PercentageChange(i) := ChangeResults(i) / max(k in 1..MethodCount)ChangeResults(k)
+	end-do
+	
+	Export:= ""
+	
+	forall(i in 1..MethodCount) do
+		write(RunIndex,"\t",i)
+		forall(j in 1..3, k in 1..2) do
+			write("\t",sum(b in Bucket)Results(i,b,j,k)) !Volume and investment costs
+		end-do
+		write("\t",SpaceResults(i),"\t",ChangeResults(i),"\t",CostResults(i),"\t",
+		PercentageSpace(i),"\t",PercentageChange(i),"\t",PercentageCost(i),"\n")
+	end-do
+	
+	forall(i in 1..MethodCount) do
+		Export += "" + RunIndex + "\t" +i
+		forall(j in 1..3, k in 1..2) do
+			Export += "\t" + sum(b in Bucket)Results(i,b,j,k) !Volume and investment costs
+		end-do
+		Export += "\t" + SpaceResults(i) + "\t" + ChangeResults(i) + "\t" + CostResults(i) + "\t" +
+		PercentageSpace(i) + "\t" + PercentageChange(i) + "\t" + PercentageCost(i) + "\n"
+	end-do
+	
+	fopen(DIR + "dat/BenchmarkResults.dat", F_OUTPUT+F_APPEND)
+		write(Export)
+	fclose(F_OUTPUT)
+end-model

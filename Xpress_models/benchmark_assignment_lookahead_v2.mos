@@ -1,0 +1,463 @@
+model ModelName
+uses "mmxprs","mmrobust","r"; !gain access to the Xpress-Optimizer solver
+
+!optional parameters section
+parameters
+	DIR= "C:/Adatok/PhD/ModularAssemblyGitHub/"
+	HorizonLength = 10
+	RecSpaceReq = 12
+	FlxSpaceReq = 18
+	DedSpaceReq = 22
+	TotalAvailableSpace = 11600
+	PriceMultiDed = 0.8 
+	PriceMultiRec = 0.4 
+	PriceMultiFlx = 1 
+	DepreciationRate = 0.08
+	CostOfChange = 100
+	MaxOperatorsPerPeriod = 6600
+	W_vol = 0.003 
+	W_sale = 0.5
+	W_change = 1.4
+	W_inv = 10
+	W_clt = 0.05
+end-parameters
+
+forward procedure costRegression
+
+declarations
+	Nominal: real
+	Robust:  real
+	
+	!Scenario = 1..10
+	M = {"WS1","WS2","WS3","WS4","WS5","WS6","WS7","WS8"} !set of modules
+	S = {"Rec", "Ded", "Flx"}
+	T = 0..HorizonLength !set of horizons (strategic)
+	C = {"C1","C2","C3","C4","C5","C6","C7","C8","C9"}
+	
+	P : set of string !set of products
+	volumeDedCoeffs : set of string !set of coefficients
+	volumeRecCoeffs : set of string !set of coefficients
+	volumeFlxCoeffs : set of string !set of coefficients
+	fixRecCoeffs : set of string !set of coefficients
+	fixFlxCoeffs : set of string !set of coefficients
+	opsDedCoeffs : set of string !set of coefficients
+	opsRecCoeffs : set of string !set of coefficients
+	opsFlxCoeffs : set of string !set of coefficients
+	
+	Volume : array(P,T) of integer !uncertain
+	Forecast : array(P,T) of integer
+	DemandUncertainty : array(P,T) of real
+	
+	testList : list of real
+	
+	volumeDed : array(volumeDedCoeffs) of real
+	volumeRec : array(volumeRecCoeffs) of real
+	volumeFlx : array(volumeFlxCoeffs) of real
+	fixRec : array(fixRecCoeffs) of real
+	fixFlx : array(fixFlxCoeffs) of real
+	opsDed : array(opsDedCoeffs) of real
+	opsRec : array(opsRecCoeffs) of real
+	opsFlx : array(opsFlxCoeffs) of real
+	
+	REC : array(P,T) of mpvar
+	DED : array(P,T) of mpvar
+	FLX : array(P,T) of mpvar
+	
+	RECCLT : array(T, C) of mpvar !binary variable for product-cluster regression
+	DEDCLT : array(T, C) of mpvar
+	FLXCLT : array(T, C) of mpvar
+	
+	Assignment : array(P,T,S) of boolean
+	CHG : array(P,T,S) of mpvar
+		
+	ModulePrices : array(M) of integer
+	
+	VolumeTrend : array(P) of integer !trend of production cvolume over time: 1 (very decrease) - 5 (very increase)
+	SetupTime : array(P) of real
+	ProcTime : array(P) of real
+	ReconfigTime : array(P) of real
+	RegressionVolume : array(P) of integer
+	Cluster : array(P) of integer
+	SumModule : array (P) of integer
+	ModuleReq : array (P,M) of integer
+		
+	WS1: array(P) of integer
+	WS2: array(P) of integer
+	WS3: array(P) of integer
+	WS4: array(P) of integer
+	WS5: array(P) of integer
+	WS6: array(P) of integer
+	WS7: array(P) of integer
+	WS8: array(P) of integer
+	
+	VOL0 : array(P) of integer
+	VOL1 : array(P) of integer
+	VOL2 : array(P) of integer
+	VOL3 : array(P) of integer
+	VOL4 : array(P) of integer
+	VOL5 : array(P) of integer
+	VOL6 : array(P) of integer
+	VOL7 : array(P) of integer
+	VOL8 : array(P) of integer
+	VOL9 : array(P) of integer
+	VOL10: array(P) of integer
+	
+	InitAssignment : array(P) of string
+	InitResourcePool: array(S,M) of integer
+	
+	ResourcePool : array(M,S,T) of linctr
+	
+  	Objective: linctr !robustctr
+  	RecVolumeCost  : linctr !robustctr
+  	DedVolumeCost  : linctr !robustctr
+  	FlxVolumeCost  : linctr !robustctr
+  	VolumeCost : linctr
+	InvestmentCost  : linctr
+	DepreciationCost : linctr
+	
+	InvDed : array(T) of linctr
+	InvFlx : array(T) of linctr
+	InvRec : array(T) of linctr
+	
+	RecFixCost : array(T) of linctr
+	FlxFixCost : array(T) of linctr
+	DedFixCost : array(T) of linctr
+	
+	CapReqFlx : array(T) of linctr
+	CapReqDed : array(T) of linctr
+	CapReqRec : array(T) of linctr
+  	
+  	ChangeCost: linctr
+end-declarations
+
+initializations from "mmsheet.xls:" + DIR + "benchmarkInput.xls"
+		[WS1,WS2,WS3,WS4,WS5,WS6,WS7,WS8,SetupTime,ProcTime,ReconfigTime,RegressionVolume] as "[Products$A2:M68]"
+end-initializations
+initializations from "mmsheet.xls:" + DIR + "benchmarkInput.xls"
+		[VOL0,VOL1,VOL2,VOL3,VOL4,VOL5,VOL6,VOL7,VOL8,VOL9,VOL10] as "[Lookahead$A2:L68]"
+end-initializations
+initializations from DIR + "dat/InitAssignment.dat"
+		InitAssignment
+end-initializations
+initializations from DIR + "dat/ClusterLabels.dat"
+		Cluster
+end-initializations
+initializations from DIR + "dat/posCoeffsDedVol.dat"
+		volumeDed
+end-initializations
+initializations from DIR + "dat/posCoeffsRecVol.dat"
+		volumeRec
+end-initializations
+initializations from DIR + "dat/posCoeffsFlxVol.dat"
+		volumeFlx
+end-initializations
+initializations from DIR + "dat/coeffsFixRec.dat"
+		fixRec
+end-initializations
+initializations from DIR + "dat/coeffsFixFlx.dat"
+		fixFlx
+end-initializations
+initializations from DIR + "dat/coeffsopsDed.dat"
+		opsDed
+end-initializations
+initializations from DIR + "dat/coeffsopsRec.dat"
+		opsRec
+end-initializations
+initializations from DIR + "dat/coeffsopsFlx.dat"
+		opsFlx
+end-initializations
+
+!costRegression
+
+forall(p in P, t in T) do
+	REC(p,t) is_binary
+	DED(p,t) is_binary
+	FLX(p,t) is_binary
+	
+	ModulePrices :: (["WS1","WS2","WS3","WS4","WS5","WS6","WS7","WS8"])[30,40,33,4,10,120,20,10] ! [30,40,33,4,10,20,20,10]
+end-do
+
+
+forall(t in T, c in C) do
+	RECCLT(t,c) is_binary
+	DEDCLT(t,c) is_binary
+	FLXCLT(t,c) is_binary
+end-do
+
+forall(m in M, p in P) do
+	ModuleReq(p, "WS1") := WS1(p)
+	ModuleReq(p, "WS2") := WS2(p)
+	ModuleReq(p, "WS3") := WS3(p)
+	ModuleReq(p, "WS4") := WS4(p)
+	ModuleReq(p, "WS5") := WS5(p)
+	ModuleReq(p, "WS6") := WS6(p)
+	ModuleReq(p, "WS7") := WS7(p)
+	ModuleReq(p, "WS8") := WS8(p)
+end-do
+
+forall(p in P) do
+	Forecast(p,0) := VOL0(p)
+	Forecast(p,1) := VOL1(p)
+	Forecast(p,2) := VOL2(p)
+	Forecast(p,3) := VOL3(p)
+	Forecast(p,4) := VOL4(p)
+	Forecast(p,5) := VOL5(p)
+	Forecast(p,6) := VOL6(p)
+	Forecast(p,7) := VOL7(p)
+	Forecast(p,8) := VOL8(p)
+	Forecast(p,9) := VOL9(p)
+	Forecast(p,10):= VOL10(p)
+end-do
+
+forall(p in P, t in T)Volume(p,t) := Forecast(p,t)
+!!)
+!Constraints
+forall(t in T, p in P)REC(p,t) + DED(p,t) + FLX(p,t) = 1 !egyszerre egy rendsz. legyen rendelve
+(!
+forall(p in P) do
+	if InitAssignment(p) = "Ded" then
+		DED(p,0) = 1
+	elif InitAssignment(p) = "Flx" then
+		FLX(p,0) = 1
+	else
+		REC(p,0) = 1
+	end-if
+end-do
+!)
+forall(p in P)SumModule(p) := WS1(p) + WS2(p) +WS3(p) +WS4(p) +WS5(p) +WS6(p) + WS7(p) + WS8(p)
+
+forall(m in M, t in T) do
+	ResourcePool(m,"Rec",t) := sum(p in P)(REC(p,t) * ModuleReq(p,m))
+	ResourcePool(m,"Ded",t) := sum(p in P)(DED(p,t) * ModuleReq(p,m))
+	ResourcePool(m,"Flx",t) := sum(p in P)(FLX(p,t) * ModuleReq(p,m))
+end-do
+
+forall(t in T) do 
+	sum(m in M)(ResourcePool(m,"Ded",t) * DedSpaceReq + ResourcePool(m,"Flx",t) * FlxSpaceReq +
+	 ResourcePool(m,"Rec",t) * RecSpaceReq) <= TotalAvailableSpace ! a rendelkezésre álló helyet ne lépjük túl
+end-do
+
+forall(p in P, t in 1..HorizonLength, s in S | s = "Rec")CHG(p,t,s) >= REC(p,t) - REC(p,t-1)
+forall(p in P, t in 1..HorizonLength, s in S | s = "Ded")CHG(p,t,s) >= DED(p,t) - DED(p,t-1)
+forall(p in P, t in 1..HorizonLength, s in S | s = "Flx")CHG(p,t,s) >= FLX(p,t) - FLX(p,t-1)
+
+forall(t in T) do
+CapReqRec(t) := sum(p in P)(REC(p,t) * Volume(p,t) * ProcTime(p))
+CapReqFlx(t) := sum(p in P)(FLX(p,t) * Volume(p,t) * ProcTime(p))
+CapReqDed(t) := sum(p in P)(DED(p,t) * Volume(p,t) * ProcTime(p))
+end-do
+
+forall(t in T, p in P | (p = "P4" or p = "P61") and Volume(p,t) > 0) do
+	DEDCLT(t, "C1") >= DED(p,t)
+	FLXCLT(t, "C1") >= FLX(p,t)
+	RECCLT(t, "C1") >= REC(p,t)
+end-do
+forall(t in T, p in P | (p = "22" or p = "29") and Volume(p,t) > 0) do
+	DEDCLT(t, "C2") >= DED(p,t)
+	FLXCLT(t, "C2") >= FLX(p,t)
+	RECCLT(t, "C2") >= REC(p,t)
+end-do
+forall(t in T, p in P | (p = "P63" or p = "P42") and Volume(p,t) > 0) do
+	DEDCLT(t, "C3") >= DED(p,t)
+	FLXCLT(t, "C3") >= FLX(p,t)
+	RECCLT(t, "C3") >= REC(p,t)
+end-do
+forall(t in T, p in P | (p = "P17" or p = "P47") and Volume(p,t) > 0) do
+	DEDCLT(t, "C4") >= DED(p,t)
+	FLXCLT(t, "C4") >= FLX(p,t)
+	RECCLT(t, "C4") >= REC(p,t)
+end-do
+forall(t in T, p in P | (p = "P62" or p = "P38") and Volume(p,t) > 0) do
+	DEDCLT(t, "C5") >= DED(p,t)
+	FLXCLT(t, "C5") >= FLX(p,t)
+	RECCLT(t, "C5") >= REC(p,t)
+end-do
+forall(t in T, p in P | (p = "P67" or p = "P64") and Volume(p,t) > 0) do
+	DEDCLT(t, "C6") >= DED(p,t)
+	FLXCLT(t, "C6") >= FLX(p,t)
+	RECCLT(t, "C6") >= REC(p,t)
+end-do
+forall(t in T, p in P | (p = "P66" or p = "P65") and Volume(p,t) > 0) do
+	DEDCLT(t, "C7") >= DED(p,t)
+	FLXCLT(t, "C7") >= FLX(p,t)
+	RECCLT(t, "C7") >= REC(p,t)
+end-do
+forall(t in T, p in P | (p = "P12" or p = "P16") and Volume(p,t) > 0) do
+	DEDCLT(t, "C8") >= DED(p,t)
+	FLXCLT(t, "C8") >= FLX(p,t)
+	RECCLT(t, "C8") >= REC(p,t)
+end-do
+forall(t in T, p in P | (p = "P15" or p = "P26") and Volume(p,t) > 0) do
+	DEDCLT(t, "C9") >= DED(p,t)
+	FLXCLT(t, "C9") >= FLX(p,t)
+	RECCLT(t, "C9") >= REC(p,t)
+end-do
+
+
+!forall(p in P, s in S)CHG(p,0,s) = 0
+
+!Objective function
+RecClusterCost := sum(t in T, c in C)RECCLT(t,c) * volumeRec(c)
+DedClusterCost := sum(t in T, c in C)DEDCLT(t,c) * volumeDed(c)
+FlxClusterCost := sum(t in T, c in C)FLXCLT(t,c) * volumeFlx(c)
+
+RecVolumeCost := sum(t in T)(sum(p in P)(volumeRec(p) * REC(p,t) * Volume(p,t)))
+FlxVolumeCost := sum(t in T)(sum(p in P)(volumeFlx(p) * FLX(p,t) * Volume(p,t)))
+DedVolumeCost := sum(t in T)(sum(p in P)(volumeDed(p) * DED(p,t) * Volume(p,t)))
+
+forall(t in T) do	
+	InvRec(t) := fixRec("(Intercept)") + sum(p in P)(REC(p,t) * fixRec("Products")) + fixRec("CapReq") * CapReqRec(t)
+	InvFlx(t) := fixFlx("(Intercept)") + sum(p in P)(FLX(p,t) * fixFlx("Products")) + fixFlx("CapReq") * CapReqFlx(t)
+	InvDed(t) := sum(p in P, m in M)DED(p,t) * ModuleReq(p,m) * ModulePrices(m) * PriceMultiDed
+end-do
+
+forall(t in 0..HorizonLength-1) do
+	RecFixCost(t) >= InvRec(t + 1) - InvRec(t)
+	RecFixCost(t) >= 0
+	FlxFixCost(t) >= InvFlx(t + 1) - InvFlx(t)
+	FlxFixCost(t) >= 0
+	DedFixCost(t) := sum(p in P, s in S, m in M | s = "Ded")CHG(p,t,s) * ModuleReq(p,m) * ModulePrices(m) * PriceMultiDed
+	DedFixCost(t) >= 0
+end-do
+
+forall(t in T) do
+	opsRec("(Intercept)") + opsRec("CapReq") * CapReqRec(t)	+
+	opsDed("(Intercept)") + opsDed("CapReq") * CapReqDed(t) +
+	opsFlx("(Intercept)") + opsFlx("CapReq") * CapReqFlx(t) <= MaxOperatorsPerPeriod
+end-do
+
+ClusterCost := RecClusterCost + DedClusterCost + FlxClusterCost
+VolumeCost := RecVolumeCost + FlxVolumeCost + DedVolumeCost
+InvestmentCost := sum(t in T)(DedFixCost(t) + RecFixCost(t) + FlxFixCost(t))
+DepreciationCost := DepreciationRate * (sum(p in P, t in T, s in S, m in M)REC(p,t) * ModuleReq(p,m) * ModulePrices(m) * PriceMultiRec + 
+	+ sum(p in P, t in T, s in S, m in M)FLX(p,t) * ModuleReq(p,m) * ModulePrices(m) * PriceMultiFlx +
+	sum(p in P, t in T, s in S, m in M)DED(p,t) * ModuleReq(p,m) * ModulePrices(m) * PriceMultiDed)
+ChangeCost := sum(p in P, t in T, s in S) CHG(p,t,s) * SumModule(p) * CostOfChange
+
+Objective := VolumeCost * W_vol + DepreciationCost * W_sale + ChangeCost * W_change + InvestmentCost * W_inv + ClusterCost * W_clt
+
+!Optimization
+setparam("XPRS_MAXTIME", -600)
+setparam("XPRS_MIPRELSTOP", 0.1)
+
+minimize(Objective)
+
+writeln("Assignment:	Flx: ", sum(p in P, t in T)FLX(p,t).sol, " Ded: ", sum(p in P, t in T)DED(p,t).sol, " Rec: ", sum(p in P, t in T)REC(p,t).sol)
+writeln("CapReq:	Flx: ", sum(t in T)CapReqFlx(t).sol, " Ded: ", sum(t in T)CapReqDed(t).sol, " Rec: ", sum(t in T)CapReqRec(t).sol)
+writeln("DedFix: ", sum(t in T)InvDed(t).sol, " RecFix: ", sum(t in T)InvRec(t).sol, " FlxFix: ", sum(t in T)InvFlx(t).sol)
+writeln("TotalCost: ", Objective.sol,"\nInvestment: ",InvestmentCost.sol * W_inv, "\nChangeCost: ",ChangeCost.sol * W_change,
+	 "\nVolumeCost: ", VolumeCost.sol * W_vol, "\nSaleIncome: ", DepreciationCost.sol * W_sale, "\nClusterCost: ", ClusterCost.sol * W_clt)
+writeln("FlxVolumeCost: ",FlxVolumeCost.sol, " DedVolumeCost: ",DedVolumeCost.sol, " RecVolumeCost: ",RecVolumeCost.sol)
+writeln("DED	FLX	REC")
+!forall(t in T)write(sum(p in P)DED(p,t).sol,"	",sum(p in P)FLX(p,t).sol,"	",sum(p in P)REC(p,t).sol,"	\n")
+!forall(p in P)writeln(p, "	",(sum(t in T, s in S)CHG(p,t,s).sol) - 1)
+
+fopen(DIR + "dat/assignmentResults.dat", F_OUTPUT)
+			write("		")
+			forall (t in 1..HorizonLength)write(t,"	")
+			write("\n")
+			forall(p in P) do 
+				write(p,"	",VolumeTrend(p),"	")
+				forall(t in T)write(Volume(p,t),"	")
+				write("\n")
+			end-do
+fclose(F_OUTPUT)
+
+fopen(DIR + "dat/assignmentResults2.dat", F_OUTPUT)
+write(";;")
+forall (p in P | VolumeTrend(p) <=0)write(p,";")
+write("\n")
+forall(t in T) do
+	write(t,";")
+	forall(p in P | VolumeTrend(p) <=0) do
+		if REC(p,t).sol >= 1 then
+			write("1;")
+		elif DED(p,t).sol >= 1 then
+			write("3;")
+		else
+			write("2;")
+		end-if
+	end-do
+	write("\n")
+end-do
+fclose(F_OUTPUT)
+fopen(DIR + "dat/assignmentResults3.dat", F_OUTPUT)
+write(";;")
+forall (p in P | VolumeTrend(p) >0)write(p,";")
+write("\n")
+forall(t in T) do
+	write(t,";")
+	forall(p in P | VolumeTrend(p) >0) do
+		if REC(p,t).sol >= 1 then
+			write("1;")
+		elif DED(p,t).sol >= 1 then
+			write("3;")
+		else
+			write("2;")
+		end-if
+	end-do
+	write("\n")
+end-do
+fclose(F_OUTPUT)
+
+forall(t in T) do
+write(ceil(CapReqDed(t).sol/1000),"	",ceil(CapReqFlx(t).sol/1000),"	",ceil(CapReqRec(t).sol/1000),"	")
+	write("\n")
+end-do
+
+forall(t in T) do
+		write(sum(p in P)DED(p,t).sol,"	",sum(p in P)FLX(p,t).sol,"	",sum(p in P)REC(p,t).sol)
+		write("\n")
+end-do
+(!
+forall (p in P) do
+	forall(t in T) do
+		if (DED(p,t).sol > 0) then
+		write("D	")
+		elif (REC(p,t).sol > 0) then
+		write("R	")
+		elif (FLX(p,t).sol > 0) then
+		write("F	")
+		else
+		write("- ")
+		end-if
+	end-do
+	write("\n")
+end-do
+
+
+forall(p in P) do
+	forall(t in T) do
+		write(Volume(p,t),"\t")
+	end-do
+	write("\n")
+end-do
+!)
+procedure costRegression
+	Reval('rm(list = ls(all = TRUE)); (WD <- getwd()); if (!is.null(WD)) setwd(WD)')
+	Reval('library(nnls)')
+end-procedure
+
+forall(p in P, t in T, s in S) do
+	if REC(p,t).sol = 1 then
+		Assignment(p,t,"Rec") := true
+	elif DED(p,t).sol = 1 then
+		Assignment(p,t,"Ded") := true
+	else
+		Assignment(p,t,"Flx") := true
+	end-if
+end-do
+
+initializations to DIR + "dat/AssignmentLookahead.dat"
+	Assignment as "Assignment"
+end-initializations
+
+forall(s in S, m in M) do
+	InitResourcePool(s,m) := ceil(ResourcePool(m,s,0).sol)
+end-do
+
+initializations to DIR + "dat/InitResourcePool.dat"
+	InitResourcePool as "InitResourcePool"
+end-initializations
+
+end-model

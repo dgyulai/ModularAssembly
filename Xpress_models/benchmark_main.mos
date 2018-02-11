@@ -1,0 +1,80 @@
+model "mmjobs example"
+uses "mmjobs","mmsystem"
+
+parameters
+	DIR= "C:/Adatok/PhD/ModularAssemblyGitHub/"
+	SystemSelect = 1
+	MethodCount = 14
+	RunIndex = 1
+end-parameters	
+
+declarations
+ mymod: Model
+ event: Event
+end-declarations
+
+!Run Greedy, heuristics-based assignment model
+writeln("----------------------------GREEDY---------------------------")
+forall(Mode in 1..14) do
+	forall(Limits in 1..6) do
+		if compile("",DIR + "benchmark_assignment_greedy.mos","shmem:bim")<>0
+			then
+			exit(1)
+		end-if
+		 
+		load(mymod,"shmem:bim")      ! Load bim file from memory...
+		fdelete("shmem:bim")         ! ... and release the memory block
+		run(mymod, "Mode=" + Mode + ",Limits=" + Limits)
+		wait
+		event:=getnextevent
+		unload(mymod)
+	end-do
+end-do
+
+
+writeln("----------------------------LOOKAHEAD---------------------------")
+!Run Lookahead assignment model
+if compile("",DIR + "benchmark_assignment_lookahead_v2.mos","shmem:bim")<>0
+	then
+	exit(1)
+end-if
+ 
+load(mymod,"shmem:bim")      ! Load bim file from memory...
+fdelete("shmem:bim")         ! ... and release the memory block
+run(mymod)!, "RunID=" + z + ",SystemSelect=" + SystemSelect)    !1:reconfigurable, 2:dedicated, 3:flexible  + "Rand" + z
+wait
+event:=getnextevent
+unload(mymod)
+
+!Run Rolling assignment model (in loop from period 0 to 10)
+writeln("----------------------------ROLLING---------------------------")
+forall(runNo in [0,2,4,6,8,10]) do
+	if compile("",DIR + "benchmark_assignment_rollinghorizon.mos","shmem:bim")<>0
+		then
+		exit(1)
+	end-if
+	 
+	load(mymod,"shmem:bim")      ! Load bim file from memory...
+	fdelete("shmem:bim")         ! ... and release the memory block
+	run(mymod, "CurrentPeriod=" + runNo)
+	wait
+	event:=getnextevent
+	unload(mymod)
+end-do
+
+!Run the planning model for simulation of the assingment execution
+writeln("----------------------------BENCHMARK EVALUATION---------------------------")
+if compile("",DIR + "benchmark_planning_v3.mos","shmem:bim")<>0
+	then
+	exit(1)
+end-if
+ 
+load(mymod,"shmem:bim")      ! Load bim file from memory...
+fdelete("shmem:bim")         ! ... and release the memory block
+run(mymod, "MethodCount=" + MethodCount + ",RunIndex=" + RunIndex)!, "RunID=" + z + ",SystemSelect=" + SystemSelect)    !1:reconfigurable, 2:dedicated, 3:flexible  + "Rand" + z
+wait
+event:=getnextevent
+unload(mymod)
+
+
+end-model
