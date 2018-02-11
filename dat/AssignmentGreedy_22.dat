@@ -1,0 +1,399 @@
+Assignment: [(P1 0 Ded) 0 (P1 0 Flx) 0 (P1 0 Rec) 1 (P1 1 Ded) 0 (P1 1 Flx) 0 (P1 1 Rec) 1
+ (P1 2 Ded) 0 (P1 2 Flx) 0 (P1 2 Rec) 1 (P1 3 Ded) 0 (P1 3 Flx) 0 (P1 3 Rec) 1
+ (P1 4 Ded) 0 (P1 4 Flx) 0 (P1 4 Rec) 1 (P1 5 Ded) 0 (P1 5 Flx) 0 (P1 5 Rec) 1
+ (P1 6 Ded) 0 (P1 6 Flx) 0 (P1 6 Rec) 1 (P1 7 Ded) 0 (P1 7 Flx) 0 (P1 7 Rec) 1
+ (P1 8 Ded) 0 (P1 8 Flx) 0 (P1 8 Rec) 1 (P1 9 Ded) 0 (P1 9 Flx) 0 (P1 9 Rec) 1
+ (P1 10 Ded) 0 (P1 10 Flx) 0 (P1 10 Rec) 1 (P2 0 Ded) 0 (P2 0 Flx) 1 (P2 0
+ Rec) 0 (P2 1 Ded) 0 (P2 1 Flx) 1 (P2 1 Rec) 0 (P2 2 Ded) 0 (P2 2 Flx) 1 (P2
+ 2 Rec) 0 (P2 3 Ded) 0 (P2 3 Flx) 1 (P2 3 Rec) 0 (P2 4 Ded) 0 (P2 4 Flx) 1
+ (P2 4 Rec) 0 (P2 5 Ded) 0 (P2 5 Flx) 1 (P2 5 Rec) 0 (P2 6 Ded) 0 (P2 6 Flx) 1
+ (P2 6 Rec) 0 (P2 7 Ded) 0 (P2 7 Flx) 0 (P2 7 Rec) 1 (P2 8 Ded) 0 (P2 8 Flx) 0
+ (P2 8 Rec) 1 (P2 9 Ded) 0 (P2 9 Flx) 0 (P2 9 Rec) 1 (P2 10 Ded) 0 (P2 10 Flx) 0
+ (P2 10 Rec) 1 (P3 0 Ded) 0 (P3 0 Flx) 0 (P3 0 Rec) 1 (P3 1 Ded) 0 (P3 1 Flx) 0
+ (P3 1 Rec) 1 (P3 2 Ded) 0 (P3 2 Flx) 0 (P3 2 Rec) 1 (P3 3 Ded) 0 (P3 3 Flx) 0
+ (P3 3 Rec) 1 (P3 4 Ded) 0 (P3 4 Flx) 0 (P3 4 Rec) 1 (P3 5 Ded) 0 (P3 5 Flx) 0
+ (P3 5 Rec) 1 (P3 6 Ded) 0 (P3 6 Flx) 0 (P3 6 Rec) 1 (P3 7 Ded) 0 (P3 7 Flx) 0
+ (P3 7 Rec) 1 (P3 8 Ded) 0 (P3 8 Flx) 0 (P3 8 Rec) 1 (P3 9 Ded) 0 (P3 9 Flx) 0
+ (P3 9 Rec) 1 (P3 10 Ded) 0 (P3 10 Flx) 0 (P3 10 Rec) 1 (P4 0 Ded) 0 (P4 0
+ Flx) 0 (P4 0 Rec) 1 (P4 1 Ded) 0 (P4 1 Flx) 0 (P4 1 Rec) 1 (P4 2 Ded) 0 (P4
+ 2 Flx) 0 (P4 2 Rec) 1 (P4 3 Ded) 0 (P4 3 Flx) 0 (P4 3 Rec) 1 (P4 4 Ded) 0
+ (P4 4 Flx) 0 (P4 4 Rec) 1 (P4 5 Ded) 0 (P4 5 Flx) 0 (P4 5 Rec) 1 (P4 6 Ded) 0
+ (P4 6 Flx) 0 (P4 6 Rec) 1 (P4 7 Ded) 0 (P4 7 Flx) 0 (P4 7 Rec) 1 (P4 8 Ded) 0
+ (P4 8 Flx) 0 (P4 8 Rec) 1 (P4 9 Ded) 0 (P4 9 Flx) 0 (P4 9 Rec) 1 (P4 10 Ded) 0
+ (P4 10 Flx) 0 (P4 10 Rec) 1 (P5 0 Ded) 0 (P5 0 Flx) 0 (P5 0 Rec) 1 (P5 1 Ded) 0
+ (P5 1 Flx) 0 (P5 1 Rec) 1 (P5 2 Ded) 0 (P5 2 Flx) 0 (P5 2 Rec) 1 (P5 3 Ded) 0
+ (P5 3 Flx) 0 (P5 3 Rec) 1 (P5 4 Ded) 0 (P5 4 Flx) 0 (P5 4 Rec) 1 (P5 5 Ded) 0
+ (P5 5 Flx) 0 (P5 5 Rec) 1 (P5 6 Ded) 0 (P5 6 Flx) 0 (P5 6 Rec) 1 (P5 7 Ded) 0
+ (P5 7 Flx) 0 (P5 7 Rec) 1 (P5 8 Ded) 0 (P5 8 Flx) 0 (P5 8 Rec) 1 (P5 9 Ded) 0
+ (P5 9 Flx) 0 (P5 9 Rec) 1 (P5 10 Ded) 0 (P5 10 Flx) 0 (P5 10 Rec) 1 (P6 0
+ Ded) 1 (P6 0 Flx) 0 (P6 0 Rec) 0 (P6 1 Ded) 1 (P6 1 Flx) 0 (P6 1 Rec) 0 (P6
+ 2 Ded) 1 (P6 2 Flx) 0 (P6 2 Rec) 0 (P6 3 Ded) 0 (P6 3 Flx) 1 (P6 3 Rec) 0
+ (P6 4 Ded) 0 (P6 4 Flx) 1 (P6 4 Rec) 0 (P6 5 Ded) 0 (P6 5 Flx) 1 (P6 5 Rec) 0
+ (P6 6 Ded) 0 (P6 6 Flx) 1 (P6 6 Rec) 0 (P6 7 Ded) 0 (P6 7 Flx) 1 (P6 7 Rec) 0
+ (P6 8 Ded) 1 (P6 8 Flx) 0 (P6 8 Rec) 0 (P6 9 Ded) 1 (P6 9 Flx) 0 (P6 9 Rec) 0
+ (P6 10 Ded) 1 (P6 10 Flx) 0 (P6 10 Rec) 0 (P7 0 Ded) 0 (P7 0 Flx) 1 (P7 0
+ Rec) 0 (P7 1 Ded) 1 (P7 1 Flx) 0 (P7 1 Rec) 0 (P7 2 Ded) 1 (P7 2 Flx) 0 (P7
+ 2 Rec) 0 (P7 3 Ded) 1 (P7 3 Flx) 0 (P7 3 Rec) 0 (P7 4 Ded) 1 (P7 4 Flx) 0
+ (P7 4 Rec) 0 (P7 5 Ded) 1 (P7 5 Flx) 0 (P7 5 Rec) 0 (P7 6 Ded) 1 (P7 6 Flx) 0
+ (P7 6 Rec) 0 (P7 7 Ded) 1 (P7 7 Flx) 0 (P7 7 Rec) 0 (P7 8 Ded) 1 (P7 8 Flx) 0
+ (P7 8 Rec) 0 (P7 9 Ded) 1 (P7 9 Flx) 0 (P7 9 Rec) 0 (P7 10 Ded) 1 (P7 10 Flx) 0
+ (P7 10 Rec) 0 (P8 0 Ded) 0 (P8 0 Flx) 0 (P8 0 Rec) 1 (P8 1 Ded) 0 (P8 1 Flx) 0
+ (P8 1 Rec) 1 (P8 2 Ded) 0 (P8 2 Flx) 0 (P8 2 Rec) 1 (P8 3 Ded) 0 (P8 3 Flx) 0
+ (P8 3 Rec) 1 (P8 4 Ded) 0 (P8 4 Flx) 0 (P8 4 Rec) 1 (P8 5 Ded) 0 (P8 5 Flx) 0
+ (P8 5 Rec) 1 (P8 6 Ded) 0 (P8 6 Flx) 0 (P8 6 Rec) 1 (P8 7 Ded) 0 (P8 7 Flx) 0
+ (P8 7 Rec) 1 (P8 8 Ded) 0 (P8 8 Flx) 0 (P8 8 Rec) 1 (P8 9 Ded) 0 (P8 9 Flx) 0
+ (P8 9 Rec) 1 (P8 10 Ded) 0 (P8 10 Flx) 0 (P8 10 Rec) 1 (P9 0 Ded) 0 (P9 0
+ Flx) 0 (P9 0 Rec) 1 (P9 1 Ded) 0 (P9 1 Flx) 0 (P9 1 Rec) 1 (P9 2 Ded) 0 (P9
+ 2 Flx) 0 (P9 2 Rec) 1 (P9 3 Ded) 0 (P9 3 Flx) 0 (P9 3 Rec) 1 (P9 4 Ded) 0
+ (P9 4 Flx) 0 (P9 4 Rec) 1 (P9 5 Ded) 0 (P9 5 Flx) 0 (P9 5 Rec) 1 (P9 6 Ded) 0
+ (P9 6 Flx) 0 (P9 6 Rec) 1 (P9 7 Ded) 0 (P9 7 Flx) 0 (P9 7 Rec) 1 (P9 8 Ded) 0
+ (P9 8 Flx) 0 (P9 8 Rec) 1 (P9 9 Ded) 0 (P9 9 Flx) 0 (P9 9 Rec) 1 (P9 10 Ded) 0
+ (P9 10 Flx) 0 (P9 10 Rec) 1 (P10 0 Ded) 0 (P10 0 Flx) 1 (P10 0 Rec) 0 (P10
+ 1 Ded) 0 (P10 1 Flx) 1 (P10 1 Rec) 0 (P10 2 Ded) 0 (P10 2 Flx) 1 (P10 2 Rec) 0
+ (P10 3 Ded) 0 (P10 3 Flx) 1 (P10 3 Rec) 0 (P10 4 Ded) 0 (P10 4 Flx) 1 (P10
+ 4 Rec) 0 (P10 5 Ded) 0 (P10 5 Flx) 1 (P10 5 Rec) 0 (P10 6 Ded) 0 (P10 6 Flx) 1
+ (P10 6 Rec) 0 (P10 7 Ded) 0 (P10 7 Flx) 1 (P10 7 Rec) 0 (P10 8 Ded) 0 (P10
+ 8 Flx) 1 (P10 8 Rec) 0 (P10 9 Ded) 0 (P10 9 Flx) 1 (P10 9 Rec) 0 (P10 10 Ded) 0
+ (P10 10 Flx) 1 (P10 10 Rec) 0 (P11 0 Ded) 0 (P11 0 Flx) 0 (P11 0 Rec) 1 (P11
+ 1 Ded) 0 (P11 1 Flx) 0 (P11 1 Rec) 1 (P11 2 Ded) 0 (P11 2 Flx) 0 (P11 2 Rec) 1
+ (P11 3 Ded) 0 (P11 3 Flx) 0 (P11 3 Rec) 1 (P11 4 Ded) 0 (P11 4 Flx) 0 (P11
+ 4 Rec) 1 (P11 5 Ded) 0 (P11 5 Flx) 0 (P11 5 Rec) 1 (P11 6 Ded) 0 (P11 6 Flx) 0
+ (P11 6 Rec) 1 (P11 7 Ded) 0 (P11 7 Flx) 0 (P11 7 Rec) 1 (P11 8 Ded) 0 (P11
+ 8 Flx) 0 (P11 8 Rec) 1 (P11 9 Ded) 0 (P11 9 Flx) 0 (P11 9 Rec) 1 (P11 10 Ded) 0
+ (P11 10 Flx) 0 (P11 10 Rec) 1 (P12 0 Ded) 0 (P12 0 Flx) 1 (P12 0 Rec) 0 (P12
+ 1 Ded) 0 (P12 1 Flx) 1 (P12 1 Rec) 0 (P12 2 Ded) 0 (P12 2 Flx) 1 (P12 2 Rec) 0
+ (P12 3 Ded) 0 (P12 3 Flx) 1 (P12 3 Rec) 0 (P12 4 Ded) 0 (P12 4 Flx) 0 (P12
+ 4 Rec) 1 (P12 5 Ded) 0 (P12 5 Flx) 1 (P12 5 Rec) 0 (P12 6 Ded) 0 (P12 6 Flx) 1
+ (P12 6 Rec) 0 (P12 7 Ded) 0 (P12 7 Flx) 1 (P12 7 Rec) 0 (P12 8 Ded) 0 (P12
+ 8 Flx) 1 (P12 8 Rec) 0 (P12 9 Ded) 0 (P12 9 Flx) 1 (P12 9 Rec) 0 (P12 10 Ded) 0
+ (P12 10 Flx) 1 (P12 10 Rec) 0 (P13 0 Ded) 0 (P13 0 Flx) 0 (P13 0 Rec) 1 (P13
+ 1 Ded) 0 (P13 1 Flx) 0 (P13 1 Rec) 1 (P13 2 Ded) 0 (P13 2 Flx) 0 (P13 2 Rec) 1
+ (P13 3 Ded) 0 (P13 3 Flx) 0 (P13 3 Rec) 1 (P13 4 Ded) 0 (P13 4 Flx) 0 (P13
+ 4 Rec) 1 (P13 5 Ded) 0 (P13 5 Flx) 0 (P13 5 Rec) 1 (P13 6 Ded) 0 (P13 6 Flx) 0
+ (P13 6 Rec) 1 (P13 7 Ded) 0 (P13 7 Flx) 0 (P13 7 Rec) 1 (P13 8 Ded) 0 (P13
+ 8 Flx) 0 (P13 8 Rec) 1 (P13 9 Ded) 0 (P13 9 Flx) 0 (P13 9 Rec) 1 (P13 10 Ded) 0
+ (P13 10 Flx) 0 (P13 10 Rec) 1 (P14 0 Ded) 0 (P14 0 Flx) 1 (P14 0 Rec) 0 (P14
+ 1 Ded) 0 (P14 1 Flx) 0 (P14 1 Rec) 1 (P14 2 Ded) 0 (P14 2 Flx) 0 (P14 2 Rec) 1
+ (P14 3 Ded) 0 (P14 3 Flx) 0 (P14 3 Rec) 1 (P14 4 Ded) 0 (P14 4 Flx) 0 (P14
+ 4 Rec) 1 (P14 5 Ded) 0 (P14 5 Flx) 0 (P14 5 Rec) 1 (P14 6 Ded) 0 (P14 6 Flx) 0
+ (P14 6 Rec) 1 (P14 7 Ded) 0 (P14 7 Flx) 0 (P14 7 Rec) 1 (P14 8 Ded) 0 (P14
+ 8 Flx) 0 (P14 8 Rec) 1 (P14 9 Ded) 0 (P14 9 Flx) 0 (P14 9 Rec) 1 (P14 10 Ded) 0
+ (P14 10 Flx) 0 (P14 10 Rec) 1 (P15 0 Ded) 0 (P15 0 Flx) 0 (P15 0 Rec) 1 (P15
+ 1 Ded) 0 (P15 1 Flx) 1 (P15 1 Rec) 0 (P15 2 Ded) 0 (P15 2 Flx) 1 (P15 2 Rec) 0
+ (P15 3 Ded) 0 (P15 3 Flx) 1 (P15 3 Rec) 0 (P15 4 Ded) 0 (P15 4 Flx) 1 (P15
+ 4 Rec) 0 (P15 5 Ded) 0 (P15 5 Flx) 1 (P15 5 Rec) 0 (P15 6 Ded) 0 (P15 6 Flx) 1
+ (P15 6 Rec) 0 (P15 7 Ded) 0 (P15 7 Flx) 1 (P15 7 Rec) 0 (P15 8 Ded) 0 (P15
+ 8 Flx) 1 (P15 8 Rec) 0 (P15 9 Ded) 0 (P15 9 Flx) 1 (P15 9 Rec) 0 (P15 10 Ded) 0
+ (P15 10 Flx) 1 (P15 10 Rec) 0 (P16 0 Ded) 0 (P16 0 Flx) 1 (P16 0 Rec) 0 (P16
+ 1 Ded) 0 (P16 1 Flx) 1 (P16 1 Rec) 0 (P16 2 Ded) 0 (P16 2 Flx) 1 (P16 2 Rec) 0
+ (P16 3 Ded) 0 (P16 3 Flx) 1 (P16 3 Rec) 0 (P16 4 Ded) 0 (P16 4 Flx) 1 (P16
+ 4 Rec) 0 (P16 5 Ded) 0 (P16 5 Flx) 1 (P16 5 Rec) 0 (P16 6 Ded) 1 (P16 6 Flx) 0
+ (P16 6 Rec) 0 (P16 7 Ded) 1 (P16 7 Flx) 0 (P16 7 Rec) 0 (P16 8 Ded) 1 (P16
+ 8 Flx) 0 (P16 8 Rec) 0 (P16 9 Ded) 1 (P16 9 Flx) 0 (P16 9 Rec) 0 (P16 10 Ded) 1
+ (P16 10 Flx) 0 (P16 10 Rec) 0 (P17 0 Ded) 0 (P17 0 Flx) 0 (P17 0 Rec) 1 (P17
+ 1 Ded) 0 (P17 1 Flx) 0 (P17 1 Rec) 1 (P17 2 Ded) 0 (P17 2 Flx) 0 (P17 2 Rec) 1
+ (P17 3 Ded) 0 (P17 3 Flx) 0 (P17 3 Rec) 1 (P17 4 Ded) 0 (P17 4 Flx) 0 (P17
+ 4 Rec) 1 (P17 5 Ded) 0 (P17 5 Flx) 0 (P17 5 Rec) 1 (P17 6 Ded) 0 (P17 6 Flx) 0
+ (P17 6 Rec) 1 (P17 7 Ded) 0 (P17 7 Flx) 0 (P17 7 Rec) 1 (P17 8 Ded) 0 (P17
+ 8 Flx) 0 (P17 8 Rec) 1 (P17 9 Ded) 0 (P17 9 Flx) 0 (P17 9 Rec) 1 (P17 10 Ded) 0
+ (P17 10 Flx) 0 (P17 10 Rec) 1 (P18 0 Ded) 0 (P18 0 Flx) 1 (P18 0 Rec) 0 (P18
+ 1 Ded) 0 (P18 1 Flx) 1 (P18 1 Rec) 0 (P18 2 Ded) 0 (P18 2 Flx) 1 (P18 2 Rec) 0
+ (P18 3 Ded) 0 (P18 3 Flx) 1 (P18 3 Rec) 0 (P18 4 Ded) 0 (P18 4 Flx) 1 (P18
+ 4 Rec) 0 (P18 5 Ded) 0 (P18 5 Flx) 1 (P18 5 Rec) 0 (P18 6 Ded) 0 (P18 6 Flx) 0
+ (P18 6 Rec) 1 (P18 7 Ded) 0 (P18 7 Flx) 0 (P18 7 Rec) 1 (P18 8 Ded) 0 (P18
+ 8 Flx) 0 (P18 8 Rec) 1 (P18 9 Ded) 0 (P18 9 Flx) 0 (P18 9 Rec) 1 (P18 10 Ded) 0
+ (P18 10 Flx) 0 (P18 10 Rec) 1 (P19 0 Ded) 0 (P19 0 Flx) 1 (P19 0 Rec) 0 (P19
+ 1 Ded) 0 (P19 1 Flx) 1 (P19 1 Rec) 0 (P19 2 Ded) 0 (P19 2 Flx) 1 (P19 2 Rec) 0
+ (P19 3 Ded) 0 (P19 3 Flx) 1 (P19 3 Rec) 0 (P19 4 Ded) 0 (P19 4 Flx) 1 (P19
+ 4 Rec) 0 (P19 5 Ded) 0 (P19 5 Flx) 1 (P19 5 Rec) 0 (P19 6 Ded) 0 (P19 6 Flx) 1
+ (P19 6 Rec) 0 (P19 7 Ded) 0 (P19 7 Flx) 1 (P19 7 Rec) 0 (P19 8 Ded) 0 (P19
+ 8 Flx) 1 (P19 8 Rec) 0 (P19 9 Ded) 0 (P19 9 Flx) 1 (P19 9 Rec) 0 (P19 10 Ded) 0
+ (P19 10 Flx) 1 (P19 10 Rec) 0 (P20 0 Ded) 1 (P20 0 Flx) 0 (P20 0 Rec) 0 (P20
+ 1 Ded) 1 (P20 1 Flx) 0 (P20 1 Rec) 0 (P20 2 Ded) 1 (P20 2 Flx) 0 (P20 2 Rec) 0
+ (P20 3 Ded) 1 (P20 3 Flx) 0 (P20 3 Rec) 0 (P20 4 Ded) 1 (P20 4 Flx) 0 (P20
+ 4 Rec) 0 (P20 5 Ded) 1 (P20 5 Flx) 0 (P20 5 Rec) 0 (P20 6 Ded) 1 (P20 6 Flx) 0
+ (P20 6 Rec) 0 (P20 7 Ded) 1 (P20 7 Flx) 0 (P20 7 Rec) 0 (P20 8 Ded) 1 (P20
+ 8 Flx) 0 (P20 8 Rec) 0 (P20 9 Ded) 1 (P20 9 Flx) 0 (P20 9 Rec) 0 (P20 10 Ded) 1
+ (P20 10 Flx) 0 (P20 10 Rec) 0 (P21 0 Ded) 0 (P21 0 Flx) 0 (P21 0 Rec) 1 (P21
+ 1 Ded) 0 (P21 1 Flx) 0 (P21 1 Rec) 1 (P21 2 Ded) 0 (P21 2 Flx) 0 (P21 2 Rec) 1
+ (P21 3 Ded) 0 (P21 3 Flx) 0 (P21 3 Rec) 1 (P21 4 Ded) 0 (P21 4 Flx) 0 (P21
+ 4 Rec) 1 (P21 5 Ded) 0 (P21 5 Flx) 0 (P21 5 Rec) 1 (P21 6 Ded) 0 (P21 6 Flx) 0
+ (P21 6 Rec) 1 (P21 7 Ded) 0 (P21 7 Flx) 0 (P21 7 Rec) 1 (P21 8 Ded) 0 (P21
+ 8 Flx) 0 (P21 8 Rec) 1 (P21 9 Ded) 0 (P21 9 Flx) 0 (P21 9 Rec) 1 (P21 10 Ded) 0
+ (P21 10 Flx) 0 (P21 10 Rec) 1 (P22 0 Ded) 0 (P22 0 Flx) 0 (P22 0 Rec) 1 (P22
+ 1 Ded) 0 (P22 1 Flx) 0 (P22 1 Rec) 1 (P22 2 Ded) 0 (P22 2 Flx) 0 (P22 2 Rec) 1
+ (P22 3 Ded) 0 (P22 3 Flx) 0 (P22 3 Rec) 1 (P22 4 Ded) 0 (P22 4 Flx) 0 (P22
+ 4 Rec) 1 (P22 5 Ded) 0 (P22 5 Flx) 0 (P22 5 Rec) 1 (P22 6 Ded) 0 (P22 6 Flx) 0
+ (P22 6 Rec) 1 (P22 7 Ded) 0 (P22 7 Flx) 0 (P22 7 Rec) 1 (P22 8 Ded) 0 (P22
+ 8 Flx) 0 (P22 8 Rec) 1 (P22 9 Ded) 0 (P22 9 Flx) 0 (P22 9 Rec) 1 (P22 10 Ded) 0
+ (P22 10 Flx) 0 (P22 10 Rec) 1 (P23 0 Ded) 0 (P23 0 Flx) 1 (P23 0 Rec) 0 (P23
+ 1 Ded) 0 (P23 1 Flx) 0 (P23 1 Rec) 1 (P23 2 Ded) 0 (P23 2 Flx) 1 (P23 2 Rec) 0
+ (P23 3 Ded) 0 (P23 3 Flx) 0 (P23 3 Rec) 1 (P23 4 Ded) 0 (P23 4 Flx) 0 (P23
+ 4 Rec) 1 (P23 5 Ded) 0 (P23 5 Flx) 0 (P23 5 Rec) 1 (P23 6 Ded) 0 (P23 6 Flx) 1
+ (P23 6 Rec) 0 (P23 7 Ded) 0 (P23 7 Flx) 1 (P23 7 Rec) 0 (P23 8 Ded) 0 (P23
+ 8 Flx) 1 (P23 8 Rec) 0 (P23 9 Ded) 0 (P23 9 Flx) 1 (P23 9 Rec) 0 (P23 10 Ded) 0
+ (P23 10 Flx) 1 (P23 10 Rec) 0 (P24 0 Ded) 0 (P24 0 Flx) 1 (P24 0 Rec) 0 (P24
+ 1 Ded) 0 (P24 1 Flx) 1 (P24 1 Rec) 0 (P24 2 Ded) 0 (P24 2 Flx) 1 (P24 2 Rec) 0
+ (P24 3 Ded) 0 (P24 3 Flx) 1 (P24 3 Rec) 0 (P24 4 Ded) 0 (P24 4 Flx) 1 (P24
+ 4 Rec) 0 (P24 5 Ded) 0 (P24 5 Flx) 1 (P24 5 Rec) 0 (P24 6 Ded) 0 (P24 6 Flx) 1
+ (P24 6 Rec) 0 (P24 7 Ded) 0 (P24 7 Flx) 1 (P24 7 Rec) 0 (P24 8 Ded) 0 (P24
+ 8 Flx) 1 (P24 8 Rec) 0 (P24 9 Ded) 0 (P24 9 Flx) 1 (P24 9 Rec) 0 (P24 10 Ded) 0
+ (P24 10 Flx) 1 (P24 10 Rec) 0 (P25 0 Ded) 0 (P25 0 Flx) 0 (P25 0 Rec) 1 (P25
+ 1 Ded) 0 (P25 1 Flx) 0 (P25 1 Rec) 1 (P25 2 Ded) 0 (P25 2 Flx) 0 (P25 2 Rec) 1
+ (P25 3 Ded) 0 (P25 3 Flx) 1 (P25 3 Rec) 0 (P25 4 Ded) 0 (P25 4 Flx) 0 (P25
+ 4 Rec) 1 (P25 5 Ded) 0 (P25 5 Flx) 0 (P25 5 Rec) 1 (P25 6 Ded) 0 (P25 6 Flx) 0
+ (P25 6 Rec) 1 (P25 7 Ded) 0 (P25 7 Flx) 0 (P25 7 Rec) 1 (P25 8 Ded) 0 (P25
+ 8 Flx) 0 (P25 8 Rec) 1 (P25 9 Ded) 0 (P25 9 Flx) 0 (P25 9 Rec) 1 (P25 10 Ded) 0
+ (P25 10 Flx) 0 (P25 10 Rec) 1 (P26 0 Ded) 1 (P26 0 Flx) 0 (P26 0 Rec) 0 (P26
+ 1 Ded) 1 (P26 1 Flx) 0 (P26 1 Rec) 0 (P26 2 Ded) 1 (P26 2 Flx) 0 (P26 2 Rec) 0
+ (P26 3 Ded) 1 (P26 3 Flx) 0 (P26 3 Rec) 0 (P26 4 Ded) 1 (P26 4 Flx) 0 (P26
+ 4 Rec) 0 (P26 5 Ded) 1 (P26 5 Flx) 0 (P26 5 Rec) 0 (P26 6 Ded) 1 (P26 6 Flx) 0
+ (P26 6 Rec) 0 (P26 7 Ded) 1 (P26 7 Flx) 0 (P26 7 Rec) 0 (P26 8 Ded) 1 (P26
+ 8 Flx) 0 (P26 8 Rec) 0 (P26 9 Ded) 1 (P26 9 Flx) 0 (P26 9 Rec) 0 (P26 10 Ded) 1
+ (P26 10 Flx) 0 (P26 10 Rec) 0 (P27 0 Ded) 0 (P27 0 Flx) 0 (P27 0 Rec) 1 (P27
+ 1 Ded) 0 (P27 1 Flx) 0 (P27 1 Rec) 1 (P27 2 Ded) 0 (P27 2 Flx) 0 (P27 2 Rec) 1
+ (P27 3 Ded) 0 (P27 3 Flx) 0 (P27 3 Rec) 1 (P27 4 Ded) 0 (P27 4 Flx) 0 (P27
+ 4 Rec) 1 (P27 5 Ded) 0 (P27 5 Flx) 0 (P27 5 Rec) 1 (P27 6 Ded) 0 (P27 6 Flx) 0
+ (P27 6 Rec) 1 (P27 7 Ded) 0 (P27 7 Flx) 0 (P27 7 Rec) 1 (P27 8 Ded) 0 (P27
+ 8 Flx) 0 (P27 8 Rec) 1 (P27 9 Ded) 0 (P27 9 Flx) 0 (P27 9 Rec) 1 (P27 10 Ded) 0
+ (P27 10 Flx) 0 (P27 10 Rec) 1 (P28 0 Ded) 0 (P28 0 Flx) 0 (P28 0 Rec) 1 (P28
+ 1 Ded) 0 (P28 1 Flx) 0 (P28 1 Rec) 1 (P28 2 Ded) 0 (P28 2 Flx) 1 (P28 2 Rec) 0
+ (P28 3 Ded) 0 (P28 3 Flx) 1 (P28 3 Rec) 0 (P28 4 Ded) 0 (P28 4 Flx) 1 (P28
+ 4 Rec) 0 (P28 5 Ded) 0 (P28 5 Flx) 1 (P28 5 Rec) 0 (P28 6 Ded) 0 (P28 6 Flx) 1
+ (P28 6 Rec) 0 (P28 7 Ded) 0 (P28 7 Flx) 1 (P28 7 Rec) 0 (P28 8 Ded) 0 (P28
+ 8 Flx) 1 (P28 8 Rec) 0 (P28 9 Ded) 0 (P28 9 Flx) 1 (P28 9 Rec) 0 (P28 10 Ded) 0
+ (P28 10 Flx) 1 (P28 10 Rec) 0 (P29 0 Ded) 1 (P29 0 Flx) 0 (P29 0 Rec) 0 (P29
+ 1 Ded) 1 (P29 1 Flx) 0 (P29 1 Rec) 0 (P29 2 Ded) 1 (P29 2 Flx) 0 (P29 2 Rec) 0
+ (P29 3 Ded) 1 (P29 3 Flx) 0 (P29 3 Rec) 0 (P29 4 Ded) 1 (P29 4 Flx) 0 (P29
+ 4 Rec) 0 (P29 5 Ded) 1 (P29 5 Flx) 0 (P29 5 Rec) 0 (P29 6 Ded) 1 (P29 6 Flx) 0
+ (P29 6 Rec) 0 (P29 7 Ded) 1 (P29 7 Flx) 0 (P29 7 Rec) 0 (P29 8 Ded) 1 (P29
+ 8 Flx) 0 (P29 8 Rec) 0 (P29 9 Ded) 1 (P29 9 Flx) 0 (P29 9 Rec) 0 (P29 10 Ded) 0
+ (P29 10 Flx) 1 (P29 10 Rec) 0 (P30 0 Ded) 0 (P30 0 Flx) 1 (P30 0 Rec) 0 (P30
+ 1 Ded) 0 (P30 1 Flx) 1 (P30 1 Rec) 0 (P30 2 Ded) 0 (P30 2 Flx) 1 (P30 2 Rec) 0
+ (P30 3 Ded) 0 (P30 3 Flx) 1 (P30 3 Rec) 0 (P30 4 Ded) 0 (P30 4 Flx) 1 (P30
+ 4 Rec) 0 (P30 5 Ded) 0 (P30 5 Flx) 1 (P30 5 Rec) 0 (P30 6 Ded) 0 (P30 6 Flx) 1
+ (P30 6 Rec) 0 (P30 7 Ded) 0 (P30 7 Flx) 1 (P30 7 Rec) 0 (P30 8 Ded) 0 (P30
+ 8 Flx) 1 (P30 8 Rec) 0 (P30 9 Ded) 0 (P30 9 Flx) 1 (P30 9 Rec) 0 (P30 10 Ded) 0
+ (P30 10 Flx) 1 (P30 10 Rec) 0 (P31 0 Ded) 0 (P31 0 Flx) 0 (P31 0 Rec) 1 (P31
+ 1 Ded) 0 (P31 1 Flx) 0 (P31 1 Rec) 1 (P31 2 Ded) 0 (P31 2 Flx) 0 (P31 2 Rec) 1
+ (P31 3 Ded) 0 (P31 3 Flx) 0 (P31 3 Rec) 1 (P31 4 Ded) 0 (P31 4 Flx) 0 (P31
+ 4 Rec) 1 (P31 5 Ded) 0 (P31 5 Flx) 0 (P31 5 Rec) 1 (P31 6 Ded) 0 (P31 6 Flx) 0
+ (P31 6 Rec) 1 (P31 7 Ded) 0 (P31 7 Flx) 0 (P31 7 Rec) 1 (P31 8 Ded) 0 (P31
+ 8 Flx) 0 (P31 8 Rec) 1 (P31 9 Ded) 0 (P31 9 Flx) 0 (P31 9 Rec) 1 (P31 10 Ded) 0
+ (P31 10 Flx) 0 (P31 10 Rec) 1 (P32 0 Ded) 0 (P32 0 Flx) 0 (P32 0 Rec) 1 (P32
+ 1 Ded) 0 (P32 1 Flx) 0 (P32 1 Rec) 1 (P32 2 Ded) 0 (P32 2 Flx) 0 (P32 2 Rec) 1
+ (P32 3 Ded) 0 (P32 3 Flx) 0 (P32 3 Rec) 1 (P32 4 Ded) 0 (P32 4 Flx) 0 (P32
+ 4 Rec) 1 (P32 5 Ded) 0 (P32 5 Flx) 0 (P32 5 Rec) 1 (P32 6 Ded) 0 (P32 6 Flx) 0
+ (P32 6 Rec) 1 (P32 7 Ded) 0 (P32 7 Flx) 0 (P32 7 Rec) 1 (P32 8 Ded) 0 (P32
+ 8 Flx) 0 (P32 8 Rec) 1 (P32 9 Ded) 0 (P32 9 Flx) 0 (P32 9 Rec) 1 (P32 10 Ded) 0
+ (P32 10 Flx) 0 (P32 10 Rec) 1 (P33 0 Ded) 0 (P33 0 Flx) 0 (P33 0 Rec) 1 (P33
+ 1 Ded) 0 (P33 1 Flx) 0 (P33 1 Rec) 1 (P33 2 Ded) 0 (P33 2 Flx) 1 (P33 2 Rec) 0
+ (P33 3 Ded) 0 (P33 3 Flx) 1 (P33 3 Rec) 0 (P33 4 Ded) 0 (P33 4 Flx) 1 (P33
+ 4 Rec) 0 (P33 5 Ded) 0 (P33 5 Flx) 1 (P33 5 Rec) 0 (P33 6 Ded) 0 (P33 6 Flx) 1
+ (P33 6 Rec) 0 (P33 7 Ded) 0 (P33 7 Flx) 1 (P33 7 Rec) 0 (P33 8 Ded) 0 (P33
+ 8 Flx) 1 (P33 8 Rec) 0 (P33 9 Ded) 0 (P33 9 Flx) 1 (P33 9 Rec) 0 (P33 10 Ded) 0
+ (P33 10 Flx) 1 (P33 10 Rec) 0 (P34 0 Ded) 0 (P34 0 Flx) 0 (P34 0 Rec) 1 (P34
+ 1 Ded) 0 (P34 1 Flx) 0 (P34 1 Rec) 1 (P34 2 Ded) 0 (P34 2 Flx) 0 (P34 2 Rec) 1
+ (P34 3 Ded) 0 (P34 3 Flx) 0 (P34 3 Rec) 1 (P34 4 Ded) 0 (P34 4 Flx) 0 (P34
+ 4 Rec) 1 (P34 5 Ded) 0 (P34 5 Flx) 0 (P34 5 Rec) 1 (P34 6 Ded) 0 (P34 6 Flx) 0
+ (P34 6 Rec) 1 (P34 7 Ded) 0 (P34 7 Flx) 0 (P34 7 Rec) 1 (P34 8 Ded) 0 (P34
+ 8 Flx) 0 (P34 8 Rec) 1 (P34 9 Ded) 0 (P34 9 Flx) 0 (P34 9 Rec) 1 (P34 10 Ded) 0
+ (P34 10 Flx) 0 (P34 10 Rec) 1 (P35 0 Ded) 0 (P35 0 Flx) 0 (P35 0 Rec) 1 (P35
+ 1 Ded) 0 (P35 1 Flx) 0 (P35 1 Rec) 1 (P35 2 Ded) 0 (P35 2 Flx) 0 (P35 2 Rec) 1
+ (P35 3 Ded) 0 (P35 3 Flx) 0 (P35 3 Rec) 1 (P35 4 Ded) 0 (P35 4 Flx) 0 (P35
+ 4 Rec) 1 (P35 5 Ded) 0 (P35 5 Flx) 0 (P35 5 Rec) 1 (P35 6 Ded) 0 (P35 6 Flx) 0
+ (P35 6 Rec) 1 (P35 7 Ded) 0 (P35 7 Flx) 0 (P35 7 Rec) 1 (P35 8 Ded) 0 (P35
+ 8 Flx) 0 (P35 8 Rec) 1 (P35 9 Ded) 0 (P35 9 Flx) 0 (P35 9 Rec) 1 (P35 10 Ded) 0
+ (P35 10 Flx) 0 (P35 10 Rec) 1 (P36 0 Ded) 0 (P36 0 Flx) 1 (P36 0 Rec) 0 (P36
+ 1 Ded) 0 (P36 1 Flx) 1 (P36 1 Rec) 0 (P36 2 Ded) 0 (P36 2 Flx) 1 (P36 2 Rec) 0
+ (P36 3 Ded) 0 (P36 3 Flx) 1 (P36 3 Rec) 0 (P36 4 Ded) 0 (P36 4 Flx) 1 (P36
+ 4 Rec) 0 (P36 5 Ded) 0 (P36 5 Flx) 1 (P36 5 Rec) 0 (P36 6 Ded) 0 (P36 6 Flx) 1
+ (P36 6 Rec) 0 (P36 7 Ded) 0 (P36 7 Flx) 1 (P36 7 Rec) 0 (P36 8 Ded) 0 (P36
+ 8 Flx) 0 (P36 8 Rec) 1 (P36 9 Ded) 0 (P36 9 Flx) 0 (P36 9 Rec) 1 (P36 10 Ded) 0
+ (P36 10 Flx) 0 (P36 10 Rec) 1 (P37 0 Ded) 0 (P37 0 Flx) 1 (P37 0 Rec) 0 (P37
+ 1 Ded) 0 (P37 1 Flx) 1 (P37 1 Rec) 0 (P37 2 Ded) 0 (P37 2 Flx) 1 (P37 2 Rec) 0
+ (P37 3 Ded) 0 (P37 3 Flx) 1 (P37 3 Rec) 0 (P37 4 Ded) 0 (P37 4 Flx) 1 (P37
+ 4 Rec) 0 (P37 5 Ded) 0 (P37 5 Flx) 1 (P37 5 Rec) 0 (P37 6 Ded) 0 (P37 6 Flx) 1
+ (P37 6 Rec) 0 (P37 7 Ded) 0 (P37 7 Flx) 1 (P37 7 Rec) 0 (P37 8 Ded) 0 (P37
+ 8 Flx) 1 (P37 8 Rec) 0 (P37 9 Ded) 0 (P37 9 Flx) 1 (P37 9 Rec) 0 (P37 10 Ded) 0
+ (P37 10 Flx) 1 (P37 10 Rec) 0 (P38 0 Ded) 1 (P38 0 Flx) 0 (P38 0 Rec) 0 (P38
+ 1 Ded) 1 (P38 1 Flx) 0 (P38 1 Rec) 0 (P38 2 Ded) 1 (P38 2 Flx) 0 (P38 2 Rec) 0
+ (P38 3 Ded) 1 (P38 3 Flx) 0 (P38 3 Rec) 0 (P38 4 Ded) 0 (P38 4 Flx) 1 (P38
+ 4 Rec) 0 (P38 5 Ded) 0 (P38 5 Flx) 1 (P38 5 Rec) 0 (P38 6 Ded) 0 (P38 6 Flx) 1
+ (P38 6 Rec) 0 (P38 7 Ded) 0 (P38 7 Flx) 1 (P38 7 Rec) 0 (P38 8 Ded) 0 (P38
+ 8 Flx) 1 (P38 8 Rec) 0 (P38 9 Ded) 0 (P38 9 Flx) 1 (P38 9 Rec) 0 (P38 10 Ded) 0
+ (P38 10 Flx) 1 (P38 10 Rec) 0 (P39 0 Ded) 0 (P39 0 Flx) 0 (P39 0 Rec) 1 (P39
+ 1 Ded) 0 (P39 1 Flx) 0 (P39 1 Rec) 1 (P39 2 Ded) 0 (P39 2 Flx) 0 (P39 2 Rec) 1
+ (P39 3 Ded) 0 (P39 3 Flx) 0 (P39 3 Rec) 1 (P39 4 Ded) 0 (P39 4 Flx) 0 (P39
+ 4 Rec) 1 (P39 5 Ded) 0 (P39 5 Flx) 0 (P39 5 Rec) 1 (P39 6 Ded) 0 (P39 6 Flx) 0
+ (P39 6 Rec) 1 (P39 7 Ded) 0 (P39 7 Flx) 0 (P39 7 Rec) 1 (P39 8 Ded) 0 (P39
+ 8 Flx) 0 (P39 8 Rec) 1 (P39 9 Ded) 0 (P39 9 Flx) 0 (P39 9 Rec) 1 (P39 10 Ded) 0
+ (P39 10 Flx) 0 (P39 10 Rec) 1 (P40 0 Ded) 0 (P40 0 Flx) 0 (P40 0 Rec) 1 (P40
+ 1 Ded) 0 (P40 1 Flx) 0 (P40 1 Rec) 1 (P40 2 Ded) 0 (P40 2 Flx) 0 (P40 2 Rec) 1
+ (P40 3 Ded) 0 (P40 3 Flx) 0 (P40 3 Rec) 1 (P40 4 Ded) 0 (P40 4 Flx) 0 (P40
+ 4 Rec) 1 (P40 5 Ded) 0 (P40 5 Flx) 0 (P40 5 Rec) 1 (P40 6 Ded) 0 (P40 6 Flx) 0
+ (P40 6 Rec) 1 (P40 7 Ded) 0 (P40 7 Flx) 0 (P40 7 Rec) 1 (P40 8 Ded) 0 (P40
+ 8 Flx) 0 (P40 8 Rec) 1 (P40 9 Ded) 0 (P40 9 Flx) 0 (P40 9 Rec) 1 (P40 10 Ded) 0
+ (P40 10 Flx) 0 (P40 10 Rec) 1 (P41 0 Ded) 0 (P41 0 Flx) 0 (P41 0 Rec) 1 (P41
+ 1 Ded) 0 (P41 1 Flx) 0 (P41 1 Rec) 1 (P41 2 Ded) 0 (P41 2 Flx) 0 (P41 2 Rec) 1
+ (P41 3 Ded) 0 (P41 3 Flx) 0 (P41 3 Rec) 1 (P41 4 Ded) 0 (P41 4 Flx) 0 (P41
+ 4 Rec) 1 (P41 5 Ded) 0 (P41 5 Flx) 0 (P41 5 Rec) 1 (P41 6 Ded) 0 (P41 6 Flx) 0
+ (P41 6 Rec) 1 (P41 7 Ded) 0 (P41 7 Flx) 0 (P41 7 Rec) 1 (P41 8 Ded) 0 (P41
+ 8 Flx) 0 (P41 8 Rec) 1 (P41 9 Ded) 0 (P41 9 Flx) 0 (P41 9 Rec) 1 (P41 10 Ded) 0
+ (P41 10 Flx) 0 (P41 10 Rec) 1 (P42 0 Ded) 0 (P42 0 Flx) 1 (P42 0 Rec) 0 (P42
+ 1 Ded) 0 (P42 1 Flx) 1 (P42 1 Rec) 0 (P42 2 Ded) 0 (P42 2 Flx) 1 (P42 2 Rec) 0
+ (P42 3 Ded) 0 (P42 3 Flx) 1 (P42 3 Rec) 0 (P42 4 Ded) 0 (P42 4 Flx) 1 (P42
+ 4 Rec) 0 (P42 5 Ded) 0 (P42 5 Flx) 1 (P42 5 Rec) 0 (P42 6 Ded) 0 (P42 6 Flx) 1
+ (P42 6 Rec) 0 (P42 7 Ded) 0 (P42 7 Flx) 1 (P42 7 Rec) 0 (P42 8 Ded) 0 (P42
+ 8 Flx) 1 (P42 8 Rec) 0 (P42 9 Ded) 0 (P42 9 Flx) 1 (P42 9 Rec) 0 (P42 10 Ded) 0
+ (P42 10 Flx) 1 (P42 10 Rec) 0 (P43 0 Ded) 0 (P43 0 Flx) 0 (P43 0 Rec) 1 (P43
+ 1 Ded) 0 (P43 1 Flx) 0 (P43 1 Rec) 1 (P43 2 Ded) 0 (P43 2 Flx) 0 (P43 2 Rec) 1
+ (P43 3 Ded) 0 (P43 3 Flx) 0 (P43 3 Rec) 1 (P43 4 Ded) 0 (P43 4 Flx) 0 (P43
+ 4 Rec) 1 (P43 5 Ded) 0 (P43 5 Flx) 1 (P43 5 Rec) 0 (P43 6 Ded) 0 (P43 6 Flx) 1
+ (P43 6 Rec) 0 (P43 7 Ded) 0 (P43 7 Flx) 1 (P43 7 Rec) 0 (P43 8 Ded) 0 (P43
+ 8 Flx) 1 (P43 8 Rec) 0 (P43 9 Ded) 0 (P43 9 Flx) 0 (P43 9 Rec) 1 (P43 10 Ded) 0
+ (P43 10 Flx) 0 (P43 10 Rec) 1 (P44 0 Ded) 0 (P44 0 Flx) 1 (P44 0 Rec) 0 (P44
+ 1 Ded) 0 (P44 1 Flx) 1 (P44 1 Rec) 0 (P44 2 Ded) 0 (P44 2 Flx) 1 (P44 2 Rec) 0
+ (P44 3 Ded) 0 (P44 3 Flx) 1 (P44 3 Rec) 0 (P44 4 Ded) 0 (P44 4 Flx) 1 (P44
+ 4 Rec) 0 (P44 5 Ded) 0 (P44 5 Flx) 1 (P44 5 Rec) 0 (P44 6 Ded) 0 (P44 6 Flx) 1
+ (P44 6 Rec) 0 (P44 7 Ded) 0 (P44 7 Flx) 1 (P44 7 Rec) 0 (P44 8 Ded) 0 (P44
+ 8 Flx) 1 (P44 8 Rec) 0 (P44 9 Ded) 0 (P44 9 Flx) 1 (P44 9 Rec) 0 (P44 10 Ded) 0
+ (P44 10 Flx) 1 (P44 10 Rec) 0 (P45 0 Ded) 1 (P45 0 Flx) 0 (P45 0 Rec) 0 (P45
+ 1 Ded) 0 (P45 1 Flx) 1 (P45 1 Rec) 0 (P45 2 Ded) 0 (P45 2 Flx) 1 (P45 2 Rec) 0
+ (P45 3 Ded) 1 (P45 3 Flx) 0 (P45 3 Rec) 0 (P45 4 Ded) 1 (P45 4 Flx) 0 (P45
+ 4 Rec) 0 (P45 5 Ded) 0 (P45 5 Flx) 1 (P45 5 Rec) 0 (P45 6 Ded) 0 (P45 6 Flx) 1
+ (P45 6 Rec) 0 (P45 7 Ded) 0 (P45 7 Flx) 1 (P45 7 Rec) 0 (P45 8 Ded) 0 (P45
+ 8 Flx) 1 (P45 8 Rec) 0 (P45 9 Ded) 0 (P45 9 Flx) 1 (P45 9 Rec) 0 (P45 10 Ded) 0
+ (P45 10 Flx) 1 (P45 10 Rec) 0 (P46 0 Ded) 0 (P46 0 Flx) 0 (P46 0 Rec) 1 (P46
+ 1 Ded) 0 (P46 1 Flx) 0 (P46 1 Rec) 1 (P46 2 Ded) 0 (P46 2 Flx) 0 (P46 2 Rec) 1
+ (P46 3 Ded) 0 (P46 3 Flx) 0 (P46 3 Rec) 1 (P46 4 Ded) 0 (P46 4 Flx) 0 (P46
+ 4 Rec) 1 (P46 5 Ded) 0 (P46 5 Flx) 0 (P46 5 Rec) 1 (P46 6 Ded) 0 (P46 6 Flx) 0
+ (P46 6 Rec) 1 (P46 7 Ded) 0 (P46 7 Flx) 0 (P46 7 Rec) 1 (P46 8 Ded) 0 (P46
+ 8 Flx) 1 (P46 8 Rec) 0 (P46 9 Ded) 0 (P46 9 Flx) 1 (P46 9 Rec) 0 (P46 10 Ded) 0
+ (P46 10 Flx) 1 (P46 10 Rec) 0 (P47 0 Ded) 0 (P47 0 Flx) 0 (P47 0 Rec) 1 (P47
+ 1 Ded) 0 (P47 1 Flx) 0 (P47 1 Rec) 1 (P47 2 Ded) 0 (P47 2 Flx) 0 (P47 2 Rec) 1
+ (P47 3 Ded) 0 (P47 3 Flx) 0 (P47 3 Rec) 1 (P47 4 Ded) 0 (P47 4 Flx) 0 (P47
+ 4 Rec) 1 (P47 5 Ded) 0 (P47 5 Flx) 0 (P47 5 Rec) 1 (P47 6 Ded) 0 (P47 6 Flx) 0
+ (P47 6 Rec) 1 (P47 7 Ded) 0 (P47 7 Flx) 0 (P47 7 Rec) 1 (P47 8 Ded) 0 (P47
+ 8 Flx) 0 (P47 8 Rec) 1 (P47 9 Ded) 0 (P47 9 Flx) 0 (P47 9 Rec) 1 (P47 10 Ded) 0
+ (P47 10 Flx) 0 (P47 10 Rec) 1 (P48 0 Ded) 0 (P48 0 Flx) 0 (P48 0 Rec) 1 (P48
+ 1 Ded) 0 (P48 1 Flx) 1 (P48 1 Rec) 0 (P48 2 Ded) 0 (P48 2 Flx) 1 (P48 2 Rec) 0
+ (P48 3 Ded) 0 (P48 3 Flx) 1 (P48 3 Rec) 0 (P48 4 Ded) 0 (P48 4 Flx) 1 (P48
+ 4 Rec) 0 (P48 5 Ded) 0 (P48 5 Flx) 1 (P48 5 Rec) 0 (P48 6 Ded) 0 (P48 6 Flx) 1
+ (P48 6 Rec) 0 (P48 7 Ded) 0 (P48 7 Flx) 1 (P48 7 Rec) 0 (P48 8 Ded) 0 (P48
+ 8 Flx) 1 (P48 8 Rec) 0 (P48 9 Ded) 0 (P48 9 Flx) 1 (P48 9 Rec) 0 (P48 10 Ded) 0
+ (P48 10 Flx) 1 (P48 10 Rec) 0 (P49 0 Ded) 0 (P49 0 Flx) 0 (P49 0 Rec) 1 (P49
+ 1 Ded) 0 (P49 1 Flx) 0 (P49 1 Rec) 1 (P49 2 Ded) 0 (P49 2 Flx) 0 (P49 2 Rec) 1
+ (P49 3 Ded) 0 (P49 3 Flx) 0 (P49 3 Rec) 1 (P49 4 Ded) 0 (P49 4 Flx) 0 (P49
+ 4 Rec) 1 (P49 5 Ded) 0 (P49 5 Flx) 0 (P49 5 Rec) 1 (P49 6 Ded) 0 (P49 6 Flx) 0
+ (P49 6 Rec) 1 (P49 7 Ded) 0 (P49 7 Flx) 0 (P49 7 Rec) 1 (P49 8 Ded) 0 (P49
+ 8 Flx) 0 (P49 8 Rec) 1 (P49 9 Ded) 0 (P49 9 Flx) 1 (P49 9 Rec) 0 (P49 10 Ded) 0
+ (P49 10 Flx) 1 (P49 10 Rec) 0 (P50 0 Ded) 1 (P50 0 Flx) 0 (P50 0 Rec) 0 (P50
+ 1 Ded) 1 (P50 1 Flx) 0 (P50 1 Rec) 0 (P50 2 Ded) 1 (P50 2 Flx) 0 (P50 2 Rec) 0
+ (P50 3 Ded) 1 (P50 3 Flx) 0 (P50 3 Rec) 0 (P50 4 Ded) 1 (P50 4 Flx) 0 (P50
+ 4 Rec) 0 (P50 5 Ded) 1 (P50 5 Flx) 0 (P50 5 Rec) 0 (P50 6 Ded) 1 (P50 6 Flx) 0
+ (P50 6 Rec) 0 (P50 7 Ded) 1 (P50 7 Flx) 0 (P50 7 Rec) 0 (P50 8 Ded) 1 (P50
+ 8 Flx) 0 (P50 8 Rec) 0 (P50 9 Ded) 1 (P50 9 Flx) 0 (P50 9 Rec) 0 (P50 10 Ded) 1
+ (P50 10 Flx) 0 (P50 10 Rec) 0 (P51 0 Ded) 0 (P51 0 Flx) 1 (P51 0 Rec) 0 (P51
+ 1 Ded) 0 (P51 1 Flx) 1 (P51 1 Rec) 0 (P51 2 Ded) 0 (P51 2 Flx) 1 (P51 2 Rec) 0
+ (P51 3 Ded) 0 (P51 3 Flx) 1 (P51 3 Rec) 0 (P51 4 Ded) 1 (P51 4 Flx) 0 (P51
+ 4 Rec) 0 (P51 5 Ded) 1 (P51 5 Flx) 0 (P51 5 Rec) 0 (P51 6 Ded) 1 (P51 6 Flx) 0
+ (P51 6 Rec) 0 (P51 7 Ded) 1 (P51 7 Flx) 0 (P51 7 Rec) 0 (P51 8 Ded) 1 (P51
+ 8 Flx) 0 (P51 8 Rec) 0 (P51 9 Ded) 1 (P51 9 Flx) 0 (P51 9 Rec) 0 (P51 10 Ded) 0
+ (P51 10 Flx) 1 (P51 10 Rec) 0 (P52 0 Ded) 0 (P52 0 Flx) 0 (P52 0 Rec) 1 (P52
+ 1 Ded) 0 (P52 1 Flx) 0 (P52 1 Rec) 1 (P52 2 Ded) 0 (P52 2 Flx) 0 (P52 2 Rec) 1
+ (P52 3 Ded) 0 (P52 3 Flx) 0 (P52 3 Rec) 1 (P52 4 Ded) 0 (P52 4 Flx) 0 (P52
+ 4 Rec) 1 (P52 5 Ded) 0 (P52 5 Flx) 0 (P52 5 Rec) 1 (P52 6 Ded) 0 (P52 6 Flx) 0
+ (P52 6 Rec) 1 (P52 7 Ded) 0 (P52 7 Flx) 0 (P52 7 Rec) 1 (P52 8 Ded) 0 (P52
+ 8 Flx) 0 (P52 8 Rec) 1 (P52 9 Ded) 0 (P52 9 Flx) 0 (P52 9 Rec) 1 (P52 10 Ded) 0
+ (P52 10 Flx) 0 (P52 10 Rec) 1 (P53 0 Ded) 1 (P53 0 Flx) 0 (P53 0 Rec) 0 (P53
+ 1 Ded) 1 (P53 1 Flx) 0 (P53 1 Rec) 0 (P53 2 Ded) 0 (P53 2 Flx) 1 (P53 2 Rec) 0
+ (P53 3 Ded) 1 (P53 3 Flx) 0 (P53 3 Rec) 0 (P53 4 Ded) 0 (P53 4 Flx) 1 (P53
+ 4 Rec) 0 (P53 5 Ded) 1 (P53 5 Flx) 0 (P53 5 Rec) 0 (P53 6 Ded) 0 (P53 6 Flx) 1
+ (P53 6 Rec) 0 (P53 7 Ded) 0 (P53 7 Flx) 1 (P53 7 Rec) 0 (P53 8 Ded) 0 (P53
+ 8 Flx) 1 (P53 8 Rec) 0 (P53 9 Ded) 0 (P53 9 Flx) 1 (P53 9 Rec) 0 (P53 10 Ded) 0
+ (P53 10 Flx) 1 (P53 10 Rec) 0 (P54 0 Ded) 0 (P54 0 Flx) 0 (P54 0 Rec) 1 (P54
+ 1 Ded) 0 (P54 1 Flx) 0 (P54 1 Rec) 1 (P54 2 Ded) 0 (P54 2 Flx) 0 (P54 2 Rec) 1
+ (P54 3 Ded) 0 (P54 3 Flx) 0 (P54 3 Rec) 1 (P54 4 Ded) 0 (P54 4 Flx) 0 (P54
+ 4 Rec) 1 (P54 5 Ded) 0 (P54 5 Flx) 0 (P54 5 Rec) 1 (P54 6 Ded) 0 (P54 6 Flx) 0
+ (P54 6 Rec) 1 (P54 7 Ded) 0 (P54 7 Flx) 0 (P54 7 Rec) 1 (P54 8 Ded) 0 (P54
+ 8 Flx) 0 (P54 8 Rec) 1 (P54 9 Ded) 0 (P54 9 Flx) 0 (P54 9 Rec) 1 (P54 10 Ded) 0
+ (P54 10 Flx) 0 (P54 10 Rec) 1 (P55 0 Ded) 0 (P55 0 Flx) 1 (P55 0 Rec) 0 (P55
+ 1 Ded) 0 (P55 1 Flx) 1 (P55 1 Rec) 0 (P55 2 Ded) 0 (P55 2 Flx) 1 (P55 2 Rec) 0
+ (P55 3 Ded) 0 (P55 3 Flx) 1 (P55 3 Rec) 0 (P55 4 Ded) 0 (P55 4 Flx) 1 (P55
+ 4 Rec) 0 (P55 5 Ded) 0 (P55 5 Flx) 1 (P55 5 Rec) 0 (P55 6 Ded) 0 (P55 6 Flx) 1
+ (P55 6 Rec) 0 (P55 7 Ded) 0 (P55 7 Flx) 1 (P55 7 Rec) 0 (P55 8 Ded) 0 (P55
+ 8 Flx) 1 (P55 8 Rec) 0 (P55 9 Ded) 0 (P55 9 Flx) 1 (P55 9 Rec) 0 (P55 10 Ded) 0
+ (P55 10 Flx) 1 (P55 10 Rec) 0 (P56 0 Ded) 0 (P56 0 Flx) 0 (P56 0 Rec) 1 (P56
+ 1 Ded) 0 (P56 1 Flx) 0 (P56 1 Rec) 1 (P56 2 Ded) 0 (P56 2 Flx) 0 (P56 2 Rec) 1
+ (P56 3 Ded) 0 (P56 3 Flx) 0 (P56 3 Rec) 1 (P56 4 Ded) 0 (P56 4 Flx) 0 (P56
+ 4 Rec) 1 (P56 5 Ded) 0 (P56 5 Flx) 0 (P56 5 Rec) 1 (P56 6 Ded) 0 (P56 6 Flx) 0
+ (P56 6 Rec) 1 (P56 7 Ded) 0 (P56 7 Flx) 0 (P56 7 Rec) 1 (P56 8 Ded) 0 (P56
+ 8 Flx) 0 (P56 8 Rec) 1 (P56 9 Ded) 0 (P56 9 Flx) 0 (P56 9 Rec) 1 (P56 10 Ded) 0
+ (P56 10 Flx) 0 (P56 10 Rec) 1 (P57 0 Ded) 0 (P57 0 Flx) 0 (P57 0 Rec) 1 (P57
+ 1 Ded) 0 (P57 1 Flx) 0 (P57 1 Rec) 1 (P57 2 Ded) 0 (P57 2 Flx) 0 (P57 2 Rec) 1
+ (P57 3 Ded) 0 (P57 3 Flx) 0 (P57 3 Rec) 1 (P57 4 Ded) 0 (P57 4 Flx) 0 (P57
+ 4 Rec) 1 (P57 5 Ded) 0 (P57 5 Flx) 0 (P57 5 Rec) 1 (P57 6 Ded) 0 (P57 6 Flx) 0
+ (P57 6 Rec) 1 (P57 7 Ded) 0 (P57 7 Flx) 0 (P57 7 Rec) 1 (P57 8 Ded) 0 (P57
+ 8 Flx) 0 (P57 8 Rec) 1 (P57 9 Ded) 0 (P57 9 Flx) 0 (P57 9 Rec) 1 (P57 10 Ded) 0
+ (P57 10 Flx) 0 (P57 10 Rec) 1 (P58 0 Ded) 0 (P58 0 Flx) 0 (P58 0 Rec) 1 (P58
+ 1 Ded) 0 (P58 1 Flx) 0 (P58 1 Rec) 1 (P58 2 Ded) 0 (P58 2 Flx) 0 (P58 2 Rec) 1
+ (P58 3 Ded) 0 (P58 3 Flx) 0 (P58 3 Rec) 1 (P58 4 Ded) 0 (P58 4 Flx) 0 (P58
+ 4 Rec) 1 (P58 5 Ded) 0 (P58 5 Flx) 0 (P58 5 Rec) 1 (P58 6 Ded) 0 (P58 6 Flx) 0
+ (P58 6 Rec) 1 (P58 7 Ded) 0 (P58 7 Flx) 0 (P58 7 Rec) 1 (P58 8 Ded) 0 (P58
+ 8 Flx) 0 (P58 8 Rec) 1 (P58 9 Ded) 0 (P58 9 Flx) 0 (P58 9 Rec) 1 (P58 10 Ded) 0
+ (P58 10 Flx) 0 (P58 10 Rec) 1 (P59 0 Ded) 0 (P59 0 Flx) 1 (P59 0 Rec) 0 (P59
+ 1 Ded) 0 (P59 1 Flx) 0 (P59 1 Rec) 1 (P59 2 Ded) 0 (P59 2 Flx) 0 (P59 2 Rec) 1
+ (P59 3 Ded) 0 (P59 3 Flx) 0 (P59 3 Rec) 1 (P59 4 Ded) 0 (P59 4 Flx) 0 (P59
+ 4 Rec) 1 (P59 5 Ded) 0 (P59 5 Flx) 0 (P59 5 Rec) 1 (P59 6 Ded) 0 (P59 6 Flx) 0
+ (P59 6 Rec) 1 (P59 7 Ded) 0 (P59 7 Flx) 0 (P59 7 Rec) 1 (P59 8 Ded) 0 (P59
+ 8 Flx) 0 (P59 8 Rec) 1 (P59 9 Ded) 0 (P59 9 Flx) 0 (P59 9 Rec) 1 (P59 10 Ded) 0
+ (P59 10 Flx) 0 (P59 10 Rec) 1 (P60 0 Ded) 0 (P60 0 Flx) 0 (P60 0 Rec) 1 (P60
+ 1 Ded) 0 (P60 1 Flx) 0 (P60 1 Rec) 1 (P60 2 Ded) 0 (P60 2 Flx) 0 (P60 2 Rec) 1
+ (P60 3 Ded) 0 (P60 3 Flx) 0 (P60 3 Rec) 1 (P60 4 Ded) 0 (P60 4 Flx) 0 (P60
+ 4 Rec) 1 (P60 5 Ded) 0 (P60 5 Flx) 0 (P60 5 Rec) 1 (P60 6 Ded) 0 (P60 6 Flx) 0
+ (P60 6 Rec) 1 (P60 7 Ded) 0 (P60 7 Flx) 0 (P60 7 Rec) 1 (P60 8 Ded) 0 (P60
+ 8 Flx) 0 (P60 8 Rec) 1 (P60 9 Ded) 0 (P60 9 Flx) 0 (P60 9 Rec) 1 (P60 10 Ded) 0
+ (P60 10 Flx) 0 (P60 10 Rec) 1 (P61 0 Ded) 0 (P61 0 Flx) 0 (P61 0 Rec) 1 (P61
+ 1 Ded) 0 (P61 1 Flx) 0 (P61 1 Rec) 1 (P61 2 Ded) 0 (P61 2 Flx) 0 (P61 2 Rec) 1
+ (P61 3 Ded) 0 (P61 3 Flx) 1 (P61 3 Rec) 0 (P61 4 Ded) 0 (P61 4 Flx) 1 (P61
+ 4 Rec) 0 (P61 5 Ded) 0 (P61 5 Flx) 1 (P61 5 Rec) 0 (P61 6 Ded) 0 (P61 6 Flx) 1
+ (P61 6 Rec) 0 (P61 7 Ded) 0 (P61 7 Flx) 1 (P61 7 Rec) 0 (P61 8 Ded) 0 (P61
+ 8 Flx) 1 (P61 8 Rec) 0 (P61 9 Ded) 0 (P61 9 Flx) 0 (P61 9 Rec) 1 (P61 10 Ded) 0
+ (P61 10 Flx) 0 (P61 10 Rec) 1 (P62 0 Ded) 0 (P62 0 Flx) 1 (P62 0 Rec) 0 (P62
+ 1 Ded) 0 (P62 1 Flx) 1 (P62 1 Rec) 0 (P62 2 Ded) 0 (P62 2 Flx) 0 (P62 2 Rec) 1
+ (P62 3 Ded) 0 (P62 3 Flx) 0 (P62 3 Rec) 1 (P62 4 Ded) 0 (P62 4 Flx) 0 (P62
+ 4 Rec) 1 (P62 5 Ded) 0 (P62 5 Flx) 0 (P62 5 Rec) 1 (P62 6 Ded) 0 (P62 6 Flx) 0
+ (P62 6 Rec) 1 (P62 7 Ded) 0 (P62 7 Flx) 0 (P62 7 Rec) 1 (P62 8 Ded) 0 (P62
+ 8 Flx) 0 (P62 8 Rec) 1 (P62 9 Ded) 0 (P62 9 Flx) 0 (P62 9 Rec) 1 (P62 10 Ded) 0
+ (P62 10 Flx) 0 (P62 10 Rec) 1 (P63 0 Ded) 0 (P63 0 Flx) 0 (P63 0 Rec) 1 (P63
+ 1 Ded) 0 (P63 1 Flx) 0 (P63 1 Rec) 1 (P63 2 Ded) 0 (P63 2 Flx) 0 (P63 2 Rec) 1
+ (P63 3 Ded) 0 (P63 3 Flx) 0 (P63 3 Rec) 1 (P63 4 Ded) 0 (P63 4 Flx) 1 (P63
+ 4 Rec) 0 (P63 5 Ded) 0 (P63 5 Flx) 1 (P63 5 Rec) 0 (P63 6 Ded) 0 (P63 6 Flx) 1
+ (P63 6 Rec) 0 (P63 7 Ded) 0 (P63 7 Flx) 1 (P63 7 Rec) 0 (P63 8 Ded) 0 (P63
+ 8 Flx) 1 (P63 8 Rec) 0 (P63 9 Ded) 0 (P63 9 Flx) 1 (P63 9 Rec) 0 (P63 10 Ded) 0
+ (P63 10 Flx) 1 (P63 10 Rec) 0 (P64 0 Ded) 1 (P64 0 Flx) 0 (P64 0 Rec) 0 (P64
+ 1 Ded) 1 (P64 1 Flx) 0 (P64 1 Rec) 0 (P64 2 Ded) 1 (P64 2 Flx) 0 (P64 2 Rec) 0
+ (P64 3 Ded) 1 (P64 3 Flx) 0 (P64 3 Rec) 0 (P64 4 Ded) 1 (P64 4 Flx) 0 (P64
+ 4 Rec) 0 (P64 5 Ded) 1 (P64 5 Flx) 0 (P64 5 Rec) 0 (P64 6 Ded) 1 (P64 6 Flx) 0
+ (P64 6 Rec) 0 (P64 7 Ded) 1 (P64 7 Flx) 0 (P64 7 Rec) 0 (P64 8 Ded) 1 (P64
+ 8 Flx) 0 (P64 8 Rec) 0 (P64 9 Ded) 1 (P64 9 Flx) 0 (P64 9 Rec) 0 (P64 10 Ded) 1
+ (P64 10 Flx) 0 (P64 10 Rec) 0 (P65 0 Ded) 0 (P65 0 Flx) 0 (P65 0 Rec) 1 (P65
+ 1 Ded) 0 (P65 1 Flx) 0 (P65 1 Rec) 1 (P65 2 Ded) 0 (P65 2 Flx) 0 (P65 2 Rec) 1
+ (P65 3 Ded) 0 (P65 3 Flx) 1 (P65 3 Rec) 0 (P65 4 Ded) 0 (P65 4 Flx) 1 (P65
+ 4 Rec) 0 (P65 5 Ded) 0 (P65 5 Flx) 1 (P65 5 Rec) 0 (P65 6 Ded) 0 (P65 6 Flx) 1
+ (P65 6 Rec) 0 (P65 7 Ded) 0 (P65 7 Flx) 0 (P65 7 Rec) 1 (P65 8 Ded) 0 (P65
+ 8 Flx) 0 (P65 8 Rec) 1 (P65 9 Ded) 0 (P65 9 Flx) 0 (P65 9 Rec) 1 (P65 10 Ded) 0
+ (P65 10 Flx) 0 (P65 10 Rec) 1 (P66 0 Ded) 0 (P66 0 Flx) 1 (P66 0 Rec) 0 (P66
+ 1 Ded) 0 (P66 1 Flx) 1 (P66 1 Rec) 0 (P66 2 Ded) 0 (P66 2 Flx) 1 (P66 2 Rec) 0
+ (P66 3 Ded) 0 (P66 3 Flx) 1 (P66 3 Rec) 0 (P66 4 Ded) 0 (P66 4 Flx) 1 (P66
+ 4 Rec) 0 (P66 5 Ded) 0 (P66 5 Flx) 1 (P66 5 Rec) 0 (P66 6 Ded) 0 (P66 6 Flx) 1
+ (P66 6 Rec) 0 (P66 7 Ded) 0 (P66 7 Flx) 1 (P66 7 Rec) 0 (P66 8 Ded) 0 (P66
+ 8 Flx) 1 (P66 8 Rec) 0 (P66 9 Ded) 0 (P66 9 Flx) 1 (P66 9 Rec) 0 (P66 10 Ded) 0
+ (P66 10 Flx) 1 (P66 10 Rec) 0 (P67 0 Ded) 0 (P67 0 Flx) 1 (P67 0 Rec) 0 (P67
+ 1 Ded) 0 (P67 1 Flx) 1 (P67 1 Rec) 0 (P67 2 Ded) 0 (P67 2 Flx) 1 (P67 2 Rec) 0
+ (P67 3 Ded) 0 (P67 3 Flx) 1 (P67 3 Rec) 0 (P67 4 Ded) 0 (P67 4 Flx) 1 (P67
+ 4 Rec) 0 (P67 5 Ded) 1 (P67 5 Flx) 0 (P67 5 Rec) 0 (P67 6 Ded) 0 (P67 6 Flx) 1
+ (P67 6 Rec) 0 (P67 7 Ded) 0 (P67 7 Flx) 1 (P67 7 Rec) 0 (P67 8 Ded) 0 (P67
+ 8 Flx) 1 (P67 8 Rec) 0 (P67 9 Ded) 0 (P67 9 Flx) 1 (P67 9 Rec) 0 (P67 10 Ded) 0
+ (P67 10 Flx) 1 (P67 10 Rec) 0]
