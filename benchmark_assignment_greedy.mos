@@ -1,10 +1,10 @@
 model ModelName
 uses "mmxprs","mmrobust","r","mmsystem"; !gain access to the Xpress-Optimizer solver
 
-!optional parameters section
+!Parameters section
 parameters
-	DIR= "C:/Adatok/SZTAKI/IJAMT/Experiments/"
-	Mode = 1 ! 1: Kumulatív WCont alapján 2: Termékenként WC száazlék alapján
+	DIR= "C:/Adatok/PhD/ModularAssemblyGitHub/"
+	Mode = 1 ! 1: Cumulative work content 2: Percentage work content per products
 	Limits = 1 	! 1: 30-70 2: 30-60 3: 20-70 4: 20-60 5: 40-70 6: 40-60
 				! 1 ! 1: 2: 3: 4: 5: 6: 
 	HorizonLength = 10
@@ -100,8 +100,8 @@ declarations
 
 end-declarations
 
-initializations from "mmsheet.xls:" + DIR + "modular_data.xls"
-		[WS1,WS2,WS3,WS4,WS5,WS6,WS7,WS8,SetupTime,ProcTime,ReconfigTime,RegressionVolume,VolumeTrend] as "[Products$A2:N68]"
+initializations from "mmsheet.xls:" + DIR + "benchmarkInput.xls"
+		[WS1,WS2,WS3,WS4,WS5,WS6,WS7,WS8,SetupTime,ProcTime,ReconfigTime,RegressionVolume] as "[Products$A2:M68]"
 end-initializations
 initializations from "mmsheet.xls:" + DIR + "benchmarkInput.xls"
 		[VOL0,VOL1,VOL2,VOL3,VOL4,VOL5,VOL6,VOL7,VOL8,VOL9,VOL10] as "[Greedy$A2:L68]"
@@ -193,7 +193,7 @@ if Mode = 1 then
 			end-if
 		end-do
 	end-do
-else ! egyszeru szazalek alapu hozzarendeles
+else 
 	forall(t in T) do
 		forall(p in P)WorkContent(p) := ceil(Volume(p,t) * ProcTime(p))
 		
