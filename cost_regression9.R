@@ -7,9 +7,9 @@
 rm(list = ls(all = TRUE))
 
 
-dedicatedData <- read.csv("planningRegression2_.dat", sep="\t", header = T, na.strings ="")
-flexibleData <- read.csv("planningRegression3_.dat", sep="\t", header = T, na.strings ="")
-reconfigurableData <- read.csv("planningRegression1_.dat", sep="\t", header = T, na.strings ="")
+dedicatedData <- read.csv("dat/planningRegression2_.dat", sep="\t", header = T, na.strings ="")
+flexibleData <- read.csv("dat/planningRegression3_.dat", sep="\t", header = T, na.strings ="")
+reconfigurableData <- read.csv("dat/planningRegression1_.dat", sep="\t", header = T, na.strings ="")
 
 library(nnls)
 
@@ -123,7 +123,7 @@ for (i in 1:length(coeffs))
   str1 <- paste(str1,'(',temp,')',coeffs[i])
 }
 str1 <- paste(str1,"]")
-write(str1, file = "posCoeffsRecVol.dat")
+write(str1, file = "dat/posCoeffsRecVol.dat")
 
 # Operator cost
 opsRec <- lm('operators ~ CapReq', data = training)
@@ -157,7 +157,7 @@ for (i in 1:length(coeffs))
   str1 <- paste(str1,'(',temp,')',coeffs[i])
 }
 str1 <- paste(str1,"]")
-write(str1, file = "posCoeffsDedVol.dat")
+write(str1, file = "dat/posCoeffsDedVol.dat")
 
 # Operator cost
 opsDed <- lm('operators ~ CapReq', data = training)
@@ -200,7 +200,7 @@ d <- testing$volumeCost
     str1 <- paste(str1,'(',temp,')',coeffs[i])
   }
   str1 <- paste(str1,"]")
-  write(str1, file = "posCoeffsFlxVol.dat")
+  write(str1, file = "dat/posCoeffsFlxVol.dat")
 
 # Operator cost
   opsFlx <- lm('operators ~ CapReq', data = training)
@@ -251,7 +251,7 @@ for (k in 1:9)
   }
   
   str1 <- paste(str1,"]")
-  write(str1, file = paste ("coeffs", selectedModelName, ".dat", sep = "", collapse = NULL))
+  write(str1, file = paste ("dat/coeffs", selectedModelName, ".dat", sep = "", collapse = NULL))
 }
 
 

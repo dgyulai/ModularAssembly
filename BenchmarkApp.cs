@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Mosel;
 using Microsoft.Office;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -33,7 +33,7 @@ namespace BenchmarkFramework
             Excel.Workbook xlWorkBook;
 
             //~~> Start Excel and open the workbook.
-            xlWorkBook = xlApp.Workbooks.Open("*PATH*");
+            xlWorkBook = xlApp.Workbooks.Open("c:\\Adatok\\PhD\\IJAMT\\ModularAssemblyGitHub\\benchmarkInput.xls");
 
             //~~> Run the macros by supplying the necessary arguments
             xlApp.Run("OrderCreation");
@@ -56,7 +56,7 @@ namespace BenchmarkFramework
 
             mosel = XPRM.Init();                        // Initialize Mosel
 
-            mod = mosel.LoadModel("*PATH*");     // Load compiled model
+            mod = mosel.LoadModel("c:\\Adatok\\PhD\\IJAMT\\ModularAssemblyGitHub\\benchmark_main.bim");     // Load compiled model
 
             mod.ExecParams = "RunIndex= " + RunNo;
             mod.Run();
