@@ -1,12 +1,30 @@
 # ModularAssembly
-This repository inlcudes the models for "Capacity management of modular assembly systems", and also the results of experiments. The method, models and results are published in a [journal paper](https://www.sciencedirect.com/science/article/pii/S0278612517300213) and in a PhD thesis "Production and and capacity planning methods for flexible and reconfigurale assembly systems" by Dávid Gyulai, MTA SZTAKI.
+This repository inlcudes the models for "Capacity management of modular assembly systems", and also the results of experiments. The method, models and results are published in a [journal paper](https://www.sciencedirect.com/science/article/pii/S0278612517300213) and in the PhD thesis "Production and and capacity planning methods for flexible and reconfigurale assembly systems" by Dávid Gyulai, MTA SZTAKI.
 
 The folllowing description provides information about the benchmark test performed in the PhD thesis: Capacity planning of modular assembly systems, written by Dávid Gyulai, MTA SZTAKI. The benchmark is performed by using several production planning and system configuration scenarios, including random parameters as well. Even though some parameters are random, their generation is described below, moreover, they do not affect the general trends of the results, as several scenarios are generated, and all methods are performed on the same scenarios. Conclusively, the benchmark is considered as a representative comparison of the different methods analyzed in the thesis.
+
+## Requirements
+
+In order to execute the experiments, two kinds of SW tools are needed:
+* A solver engine that is capable of dealing with mixed integer linear programs (MILP)
+  * `benchmark_assignment_greedy.mos` 
+  * `benchmark_assignment_lookahead_v2.mos`
+  * `benchmark_assignment_rollinghorizon.mos`
+  * `benchmark_planning_v3.mos`
+* An application to fit the regression models on the result of virtual planning scenarios
+  * `cost_regression9.R`
+* MS Excel to open the workbooks inlcuding the input data and results
+  * `benchmarkInput.xls` (note that the file includes a Visual Basic macro)
+  * `ModularResults.xlsx`
+* C#.NET to run the benchmark aplication that generates orders by running the VB macro, and executes the models sequentially
+  * `BenchmarkApp.cs` (requires Xpress' Mosel and Microsoft's Excel references)
+
+The provided mathematical models are implemented in FICO Xpress commercial optimization suite, applying its Mosel language. The data analytics models are implemented in open-source R language.
 
 ## benchmarkInput.xls
 The benchmarkInput.xls file includes all the input needed to run the experiments presented in the benchmark section of the thesis.
 
-The first sheet "Products" includes all the static data corresponding to the products and their modularized assembly lines. Column "A" includes the name of different products P1-P67. The columns WS1-WS8 provide the number of moules from each type, needed to assemble a given product type. The "SetupTime" is the setup time [min] when switchin from one product type to another, independently of the system type. The "ProcTime" is the total amount of manual processing times expressed in minutes. The "Reconfiguration" provides in formation about the reconfiguration time in minutes.
+The first sheet "Products" includes all the static data corresponding to the products and their modularized assembly lines. Column "A" includes the name of different products P1-P67. The columns WS1-WS8 provide the number of moules from each type, needed to assemble a given product type. The "SetupTime" is the setup time [min] when switching from one product type to another, independently of the system type. The "ProcTime" is the total amount of manual processing times expressed in minutes. The "Reconfiguration" provides in formation about the reconfiguration time in minutes.
 
 The second sheet "Resources" provide information about the reatio of prices of different module types, independently of the system type ("REC", "DED", "FLX").
 
