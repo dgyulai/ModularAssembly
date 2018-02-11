@@ -234,7 +234,7 @@ end-do
 
 forall(t in T) do 
 	sum(m in M)(ResourcePool(m,"Ded",t) * DedSpaceReq + ResourcePool(m,"Flx",t) * FlxSpaceReq +
-	 ResourcePool(m,"Rec",t) * RecSpaceReq) <= TotalAvailableSpace ! a rendelkezésre álló helyet ne lépjük túl
+	 ResourcePool(m,"Rec",t) * RecSpaceReq) <= TotalAvailableSpace
 end-do
 
 forall(p in P, t in 1..HorizonLength, s in S | s = "Rec")CHG(p,t,s) >= REC(p,t) - REC(p,t-1)
@@ -294,7 +294,6 @@ forall(t in T, p in P | (p = "P15" or p = "P26") and Volume(p,t) > 0) do
 end-do
 
 
-!forall(p in P, s in S)CHG(p,0,s) = 0
 
 !Objective function
 RecClusterCost := sum(t in T, c in C)RECCLT(t,c) * volumeRec(c)

@@ -223,7 +223,7 @@ end-do
 forall(p in P, t in T)Volume(p,t) := Forecast(p,t)
 !!)
 !Constraints
-forall(t in T, p in P)REC(p,t) + DED(p,t) + FLX(p,t) = 1 !egyszerre egy rendsz. legyen rendelve
+forall(t in T, p in P)REC(p,t) + DED(p,t) + FLX(p,t) = 1
 
 if CurrentPeriod <> 0 then
 	forall(p in P) do
@@ -247,7 +247,7 @@ end-do
 
 forall(t in T) do 
 	sum(m in M)(ResourcePool(m,"Ded",t) * DedSpaceReq + ResourcePool(m,"Flx",t) * FlxSpaceReq +
-	 ResourcePool(m,"Rec",t) * RecSpaceReq) <= TotalAvailableSpace ! a rendelkezésre álló helyet ne lépjük túl
+	 ResourcePool(m,"Rec",t) * RecSpaceReq) <= TotalAvailableSpace 
 end-do
 
 forall(p in P, t in (CurrentPeriod + 1)..CurrentPeriod + HorizonLength, s in S | s = "Rec")CHG(p,t,s) >= REC(p,t) - REC(p,t-1)
@@ -306,7 +306,6 @@ forall(t in T, p in P | (p = "P15" or p = "P26") and Volume(p,t) > 0) do
 	RECCLT(t, "C9") >= REC(p,t)
 end-do
 
-!forall(p in P, s in S)CHG(p,CurrentPeriod,s) = 1
 
 !Objective function
 RecClusterCost := sum(t in T, c in C)RECCLT(t,c) * volumeRec(c)
@@ -390,7 +389,7 @@ forall(p in P, t in T, s in S) do
 	end-if
 end-do
 
-forall(p in P, t in 0..10, s in S) do ! 1..10?
+forall(p in P, t in 0..10, s in S) do
 	Assignment2(p,t,s) := Assignment(p,t,s)
 end-do
 
@@ -406,7 +405,7 @@ initializations to DIR + "dat/InitResourcePool.dat"
 	InitResourcePool as "InitResourcePool"
 end-initializations
 
-forall(p in P,s in S | Assignment(p,CurrentPeriod + 1,s))RollingAssignment(p) := s ! lehet hogy +2 kell
+forall(p in P,s in S | Assignment(p,CurrentPeriod + 1,s))RollingAssignment(p) := s 
 
 initializations to DIR + "dat/InitAssignment_" + (CurrentPeriod + 2) + ".dat"
 	RollingAssignment as "InitAssignment"

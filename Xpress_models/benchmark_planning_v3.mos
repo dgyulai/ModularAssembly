@@ -19,27 +19,27 @@ model ModularProdPlanner
 	   	DegreeOfAutomDed = 1
 	   	DegreeOfAutomFlx = 2
 	   	ModulePriceMultiDed = 0.6
-	   	ModulePriceMultiRec = 1.0 !0.1
+	   	ModulePriceMultiRec = 1.0
 	   	ModulePriceMultiFlx = 1.0
-	   	RecSpaceReq = 12	!15
-		FlxSpaceReq = 18	!20
-		DedSpaceReq = 22	!25
+	   	RecSpaceReq = 12
+		FlxSpaceReq = 18
+		DedSpaceReq = 25
 		MaxSpace = 1600000
 	   	!SelectedBucket = 1
-	   	w1 = 0.01	!volume cost multiplier
-	   	w2 = 10	!investment cost multiplier
+	   	w1 = 0.01
+	   	w2 = 10
 	   	!SystemSelect =  1	!1:reconfigurable, 2:dedicated, 3:flexible
 	end-parameters
 
 	declarations
-		Bucket = 0..10 ! set of strategic planning periods
+		Bucket = 0..10
 		S  = {"Rec","Ded","Flx"}
 		T : set of integer
-		J : set of string !set of modules
-		P : set of string !subset of products, filtered by system type
-		C = 1..14 !set of clusters
+		J : set of string 
+		P : set of string 
+		C = 1..14 
 		subP : set of string
-		RO : set of integer !random generated orders
+		RO : set of integer
 		
 		NumOfOrders : integer
 		HorizonLen: integer
@@ -97,14 +97,13 @@ model ModularProdPlanner
 		ChangeCount: array(1..1) of integer
 		Changes: array(1..MethodCount,P,1..10,S) of integer
 			
-		!SimultLines : array(T) of real
-		!LowerBound : array(J) of integer
+
 		
-		H : dynamic array(T) of mpvar !dolgozók létszáma t-ben
-		N : array(J) of mpvar  !a modulok száma típusonként
-		X : dynamic array(RO,T) of mpvar !adott rendelést adott idõperiódusban gyártunk-e
-		Y : dynamic array(P,T) of mpvar !adott terméket adott idõperiódusban gyártunk-e
-		NFlex : dynamic array(C,J) of mpvar !a rugalmas sorokhoz tartozó erõforrások száma soronkénnt
+		H : dynamic array(T) of mpvar 
+		N : array(J) of mpvar  
+		X : dynamic array(RO,T) of mpvar
+		Y : dynamic array(P,T) of mpvar
+		NFlex : dynamic array(C,J) of mpvar
 
 		Item :  dynamic array(RO) of string
 		Volume :  dynamic array(RO) of integer
@@ -298,27 +297,26 @@ model ModularProdPlanner
 					end-do
 				
 					forall(ro in RO | OrderFilter(ro)) do 
-						sum(t in T)X(ro,t) = 1 !mindent le kell gyartani
+						sum(t in T)X(ro,t) = 1
 					end-do
 					
 					if SystemSelect = 1 then !RECONFIGURABLE
 						!writeln("Reconfigurable\n")
-						forall(t in T) H(t) <= sum(j in J, p in P)ModuleReq(p,j) * Y(p,t) !a dolgozok szama kevesebb mint az osszes modul muszakonkent
+						forall(t in T) H(t) <= sum(j in J, p in P)ModuleReq(p,j) * Y(p,t)
 					
-						forall (ro in RO, p in P, t in T | p = Item(ro) and Due(ro) <= HorizonLen and OrderFilter(ro)) X(ro,t) <= Y(p,t) !a setupok kezelese
+						forall (ro in RO, p in P, t in T | p = Item(ro) and Due(ro) <= HorizonLen and OrderFilter(ro)) X(ro,t) <= Y(p,t)
 						
-						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) + Y(Item(ro),t) * ReconfigTime(Item(ro))) <= H(t) * ShiftDuration !a dolgozok szama eleg a feladatok vegrehajtasahoz
+						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) + Y(Item(ro),t) * ReconfigTime(Item(ro))) <= H(t) * ShiftDuration 
 													
-						forall(j in J, t in T)(sum(p in P | VolumePerProduct(p) > 0)ModuleReq(p,j) * Y(p,t) <= ResourcePool(b-1,SysInd,j) + N(j)) !a modulok szama eleg a termekek szerelesehez
+						forall(j in J, t in T)(sum(p in P | VolumePerProduct(p) > 0)ModuleReq(p,j) * Y(p,t) <= ResourcePool(b-1,SysInd,j) + N(j)) 
 						INVESTMENT := sum(j in J)(ModulePriceMultiRec * ModulePrice(j) * N(j))
 					
 					elif SystemSelect = 2 then !DEDICATED
 						!writeln("Dedicated\n")
-						forall(t in T) H(t) <= sum(j in J, p in P)ModuleReq(p,j) * Y(p,t) !a dolgozok szama kevesebb mint az osszes modul muszakonkent
-									
-						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) * (1/DegreeOfAutomDed)) <= H(t) * ShiftDuration !a dolgozok szama eleg a feladatok vegrehajtasahoz
+						forall(t in T) H(t) <= sum(j in J, p in P)ModuleReq(p,j) * Y(p,t)
+						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) * (1/DegreeOfAutomDed)) <= H(t) * ShiftDuration
 						
-						!Csak akkor kell ha az elõzõ periódusban nem volt hozzárendelve				
+									
 						forall(j in J)N(j) = sum(p in P | VolumePerProduct(p) > 0 and Assignment(p,b-1,"Ded") = false)ModuleReq(p,j)
 						INVESTMENT := sum(j in J)(ModulePriceMultiDed * ModulePrice(j) * N(j))
 					
@@ -329,18 +327,17 @@ model ModularProdPlanner
 						end-do	
 							
 						!writeln("Flexible\n")
-						forall(t in T) H(t) <= sum(j in J, c in C | ClusterVolumes(c) > 0)NFlex(c,j) !a dolgozok szama kevesebb mint az osszes modul muszakonkent
-					
-						forall (ro in RO, p in P, t in T | p = Item(ro) and Due(ro) <= HorizonLen and OrderFilter(ro)) X(ro,t) <= Y(p,t) !a setupok kezelese
+						forall(t in T) H(t) <= sum(j in J, c in C | ClusterVolumes(c) > 0)NFlex(c,j)
+						forall (ro in RO, p in P, t in T | p = Item(ro) and Due(ro) <= HorizonLen and OrderFilter(ro)) X(ro,t) <= Y(p,t)
 						
-						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) * (1/DegreeOfAutomFlx) + Y(Item(ro),t) * 10) <= H(t) * ShiftDuration !a dolgozok szama eleg a feladatok vegrehajtasahoz
+						forall(t in T, p in P)sum(ro in RO | OrderFilter(ro))(X(ro,t) * Volume(ro) * ProcTime(Item(ro)) * (1/DegreeOfAutomFlx) + Y(Item(ro),t) * 10) <= H(t) * ShiftDuration 
 												
-						forall(j in J, t in T, c in C | ClusterVolumes(c) >= 0)(sum(p in P | Cluster(p) = c)ClusterResources(c,j) * Y(p,t) <= NFlex(c,j)) !a modulok szama clusterenként eleg a termekek szerelesehez	
+						forall(j in J, t in T, c in C | ClusterVolumes(c) >= 0)(sum(p in P | Cluster(p) = c)ClusterResources(c,j) * Y(p,t) <= NFlex(c,j))
 						
 						forall(j in J) do
 							ResourcePool(b-1,SysInd,j) + N(j) >= sum(c in C)NFlex(c,j)
 						end-do
-						INVESTMENT := sum(j in J)(ModulePriceMultiFlx * ModulePrice(j) * N(j)) !az erõforrásokba clusterenként ruházunk be
+						INVESTMENT := sum(j in J)(ModulePriceMultiFlx * ModulePrice(j) * N(j))
 					end-if
 					
 					!OBJECTIVE FUNCTIONS
