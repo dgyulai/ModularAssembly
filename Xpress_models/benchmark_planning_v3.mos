@@ -14,20 +14,20 @@ model ModularProdPlanner
 	   	Operator = 20
 	   	Operation = 10
 	   	ShiftDuration = 480
-	   	SetupCost = 5
-	   	LatenessCost = 3
-	   	DegreeOfAutomDed = 1
-	   	DegreeOfAutomFlx = 2
-	   	ModulePriceMultiDed = 0.6
-	   	ModulePriceMultiRec = 1.0
-	   	ModulePriceMultiFlx = 1.0
-	   	RecSpaceReq = 12
-		FlxSpaceReq = 18
-		DedSpaceReq = 25
+	   	SetupCost = #
+	   	LatenessCost = #
+	   	DegreeOfAutomDed = ##
+	   	DegreeOfAutomFlx = ##
+	   	ModulePriceMultiDed = ##
+	   	ModulePriceMultiRec = ##
+	   	ModulePriceMultiFlx = ##
+	   	RecSpaceReq = ##
+		FlxSpaceReq = ##
+		DedSpaceReq = #
 		MaxSpace = 1600000
 	   	!SelectedBucket = 1
-	   	w1 = 0.01
-	   	w2 = 10
+	   	w1 = ##
+	   	w2 = ##
 	   	!SystemSelect =  1	!1:reconfigurable, 2:dedicated, 3:flexible
 	end-parameters
 
